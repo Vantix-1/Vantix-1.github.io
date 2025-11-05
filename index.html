@@ -476,8 +476,8 @@ Optimized model performance achieving 40% faster inference times.
 </section>
 
 <section class="section">
-<h2><span class="icon">🚀</span>GitHub Repository</h2>
-<p style="margin-bottom: 20px;">Explore my automation and AI development projects on GitHub:</p>
+<h2><span class="icon">🚀</span>GitHub Profile</h2>
+<p style="margin-bottom: 20px;">Explore my AI development and automation projects:</p>
 
 <div class="github-terminal">
 <div class="terminal-header">
@@ -487,22 +487,23 @@ Optimized model performance achieving 40% faster inference times.
 </div>
 <div class="terminal-content">
 <div class="terminal-line">
-<span class="prompt">$</span> <span class="command">git clone</span> https://github.com/Vantix-1/automation-ai-developer
+<span class="prompt">$</span> <span class="command">git clone</span> https://github.com/Vantix-1
 </div>
 <div class="terminal-line">
-<span class="prompt">$</span> <span class="command">cd</span> automation-ai-developer
+<span class="prompt">$</span> <span class="command">cd</span> Vantix-1
 </div>
 <div class="terminal-line">
-<span class="prompt">$</span> <span style="color: #00ff88;">Repository loaded successfully ✓</span>
+<span class="prompt">$</span> <span style="color: #00ff88;">Loading repositories... ✓</span>
 </div>
 </div>
 </div>
 
 <div style="text-align: center;">
-<a href="https://github.com/Vantix-1/automation-ai-developer/actions/new"
+<a href="https://github.com/Vantix-1"
 target="_blank"
+rel="noopener noreferrer"
 class="github-link">
-🔗 View GitHub Actions & Workflows
+🔗 View GitHub Profile
 </a>
 </div>
 </section>
@@ -519,16 +520,19 @@ class="github-link">
 <p>San Francisco, CA</p>
 </div>
 <div class="contact-card">
-<h3 style="color: #00ffff; margin-bottom: 10px;">LinkedIn</h3>
-<p>/in/vancefrommer</p>
+<h3 style="color: #00ffff; margin-bottom: 10px;">GitHub</h3>
+<p><a href="https://github.com/Vantix-1" target="_blank" rel="noopener noreferrer" style="color: #00ff88; text-decoration: none;">@Vantix-1</a></p>
 </div>
 </div>
 </section>
 </div>
 
 <script>
+(function() {
 // Neural network background
 const canvas = document.getElementById('neuralCanvas');
+if (!canvas) return;
+
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -588,6 +592,7 @@ drawNetwork();
 
 // Create floating particles
 const particlesContainer = document.getElementById('particles');
+if (particlesContainer) {
 for (let i = 0; i < 20; i++) {
 const particle = document.createElement('div');
 particle.className = 'particle';
@@ -596,12 +601,14 @@ particle.style.top = Math.random() * 100 + '%';
 particle.style.animationDelay = Math.random() * 10 + 's';
 particlesContainer.appendChild(particle);
 }
+}
 
 // Resize canvas
-window.addEventListener('resize', () => {
+window.addEventListener('resize', function() {
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 });
+})();
 </script>
 </body>
 </html>
