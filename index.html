@@ -138,7 +138,6 @@
 
         /* Hero Section - Fixed for mobile */
         .hero {
-            padding-top: 100px;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -1624,10 +1623,11 @@
             canvas.height = window.innerHeight;
         });
 
-        // Fetch AI news from live API
+        // Fetch AI news from GNews API
         async function fetchAINews() {
             const container = document.getElementById('blogContainer');
-            const API_URL = 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ftechcrunch.com%2Fcategory%2Fartificial-intelligence%2Ffeed%2F';
+            const API_KEY = '0b92405fa1cab17dd8a2b48092d754d5';
+            const API_URL = `https://gnews.io/api/v4/search?q=artificial%20intelligence%20AI&lang=en&country=us&max=6&apikey=${API_KEY}`;
 
             try {
                 const response = await fetch(API_URL);
@@ -1636,36 +1636,41 @@
                 }
                 const data = await response.json();
 
-                if (data.status === 'ok') {
-                    const newsItems = data.items.slice(0, 6);
+                if (data.articles && data.articles.length > 0) {
+                    const newsItems = data.articles.slice(0, 6);
                     container.innerHTML = newsItems.map(item => {
-                        const excerpt = item.description.replace(/<[^>]*>/g, '').substring(0, 120) + '...';
-                        const pubDate = new Date(item.pubDate).toLocaleDateString('en-US', {
+                        const excerpt = item.description ? item.description.substring(0, 120) + '...' : 'No description available.';
+                        const pubDate = new Date(item.publishedAt).toLocaleDateString('en-US', {
                             year: 'numeric',
                             month: 'long',
                             day: 'numeric'
                         });
-                        const imageUrl = item.thumbnail ? `style="background-image: url(${item.thumbnail})"` : '';
-                        const fallbackIcon = item.thumbnail ? '' : '📰';
+                        const imageUrl = item.image ? `style="background-image: url(${item.image})"` : '';
+                        const fallbackIcon = item.image ? '' : '🤖';
 
                         return `
-                            <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="blog-card">
+                            <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="blog-card">
                                 <div class="blog-image" ${imageUrl}>${fallbackIcon}</div>
                                 <div class="blog-content">
                                     <div class="blog-date">${pubDate}</div>
                                     <h3>${item.title}</h3>
                                     <p>${excerpt}</p>
-                                    <span class="blog-source">Read on ${item.author || 'TechCrunch'}</span>
+                                    <span class="blog-source">Read on ${item.source.name || 'GNews'}</span>
                                 </div>
                             </a>
                         `;
                     }).join('');
                 } else {
-                    throw new Error('API status was not "ok"');
+                    throw new Error('No articles found');
                 }
             } catch (error) {
                 console.error('Error fetching AI news:', error);
-                container.innerHTML = '<div class="loading">Failed to load AI news. Please try again later.</div>';
+                container.innerHTML = `
+                    <div class="loading">
+                        <p>Failed to load AI news. Please try again later.</p>
+                        <p style="margin-top: 1rem; font-size: 0.8rem;">Error: ${error.message}</p>
+                    </div>
+                `;
             }
         }
 
