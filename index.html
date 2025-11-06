@@ -3,11 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vance Frommer | AI Developer & SaaS Architect</title>
+    <title>Vance Frommer | Automation & AI Developer</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Vance Frommer - Automation & AI Developer specializing in Python, Flask, and AI integration. Former Marine building intelligent systems.">
+    <meta name="keywords" content="AI Developer, Automation, Python, Flask, AWS, Docker, Marine Corps">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Vance Frommer | Automation & AI Developer">
+    <meta property="og:description" content="Building intelligent automation systems and AI tools. Former Marine turned developer.">
+    <meta property="og:type" content="website">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -18,12 +27,19 @@
 
         :root {
             --bg-dark: #0a0a0f;
-            --bg-card: #14141f;
+            --bg-card: rgba(20, 20, 31, 0.4);
             --accent: #00d4ff;
             --accent-glow: rgba(0, 212, 255, 0.3);
             --text-primary: #ffffff;
             --text-secondary: #a0a0b0;
             --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-accent: linear-gradient(135deg, #00d4ff 0%, #667eea 100%);
+            --success: #00ff88;
+            --warning: #ffaa00;
+            --error: #ff4444;
+            --cyber-blue: #00d4ff;
+            --cyber-green: #00ff9d;
+            --cyber-purple: #764ba2;
         }
 
         /* Modern CSS Smooth Scroll */
@@ -32,15 +48,14 @@
         }
 
         body {
-            /* Using new modern font */
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            font-family: 'Share Tech Mono', monospace;
             background: var(--bg-dark);
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Animated background (Unchanged) */
+        /* Animated background */
         .bg-animation {
             position: fixed;
             top: 0;
@@ -48,7 +63,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            opacity: 0.15;
+            opacity: 0.2;
         }
 
         .bg-animation canvas {
@@ -78,8 +93,9 @@
 
         nav .logo {
             font-size: 1.3rem;
-            font-weight: 700; /* Bolder for emphasis */
+            font-weight: 700;
             color: var(--text-primary);
+            font-family: 'Orbitron', sans-serif;
         }
 
         nav ul {
@@ -91,8 +107,9 @@
         nav a {
             color: var(--text-secondary);
             text-decoration: none;
-            transition: color 0.3s ease; /* Added 'ease' */
+            transition: color 0.3s ease;
             font-weight: 500;
+            font-family: 'Share Tech Mono', monospace;
         }
 
         nav a:hover {
@@ -115,32 +132,78 @@
             animation: fadeInUp 1s ease-out;
         }
 
-        .hero h1 {
+        /* New Cyberpunk Name Animation - Matrix Digital Rain */
+        .cyber-name {
             font-size: 4.5rem;
-            font-weight: 900; /* Using new heaviest font weight */
+            font-weight: 900;
             margin-bottom: 1rem;
-            background: var(--gradient);
+            color: var(--cyber-green);
+            animation: fadeInUp 1s ease-out 0.2s both, matrixFlicker 2s infinite;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            position: relative;
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 
+                0 0 5px var(--cyber-green),
+                0 0 10px var(--cyber-green),
+                0 0 20px var(--cyber-green),
+                0 0 40px var(--cyber-blue);
+        }
+
+        .cyber-name::before {
+            content: 'VANCE FROMMER';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--cyber-blue), transparent);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: fadeInUp 1s ease-out 0.2s both;
-            letter-spacing: -2px; /* Tighter letter-spacing for modern heading */
+            animation: matrixScan 3s linear infinite;
+            opacity: 0.7;
         }
 
         .hero .subtitle {
             font-size: 1.8rem;
-            font-weight: 600; /* Added weight */
+            font-weight: 600;
             color: var(--text-secondary);
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             animation: fadeInUp 1s ease-out 0.4s both;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 2px;
         }
 
         .hero .description {
             font-size: 1.1rem;
             color: var(--text-secondary);
             line-height: 1.8;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
             animation: fadeInUp 1s ease-out 0.6s both;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .tech-logos {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0 4rem 0;
+            flex-wrap: wrap;
+        }
+
+        .tech-logo {
+            width: 50px;
+            height: 50px;
+            filter: grayscale(1) brightness(0.8);
+            transition: all 0.3s ease;
+            opacity: 0.7;
+        }
+
+        .tech-logo:hover {
+            filter: grayscale(0) brightness(1);
+            opacity: 1;
+            transform: translateY(-5px);
         }
 
         .cta-buttons {
@@ -152,17 +215,22 @@
 
         .btn {
             padding: 1rem 2.5rem;
-            border-radius: 50px;
+            border-radius: 4px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s ease; /* Added 'ease' */
+            transition: all 0.3s ease;
             display: inline-block;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid transparent;
         }
 
         .btn-primary {
             background: var(--gradient);
             color: white;
             box-shadow: 0 10px 30px var(--accent-glow);
+            border: 1px solid var(--accent);
         }
 
         .btn-primary:hover {
@@ -171,32 +239,440 @@
         }
 
         .btn-secondary {
-            border: 2px solid var(--accent);
+            border: 1px solid var(--accent);
             color: var(--accent);
+            background: transparent;
         }
 
         .btn-secondary:hover {
             background: var(--accent);
             color: var(--bg-dark);
             transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
         }
 
         /* Section styling */
         section {
-            padding: 6rem 5%;
-            max-width: 1400px;
+            padding: 4rem 5%;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
         h2 {
             font-size: 3rem;
-            font-weight: 700; /* Added weight */
+            font-weight: 700;
             margin-bottom: 3rem;
             text-align: center;
             background: var(--gradient);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* New Cyberpunk Animations */
+        @keyframes matrixFlicker {
+            0%, 100% { 
+                opacity: 1;
+                text-shadow: 
+                    0 0 5px var(--cyber-green),
+                    0 0 10px var(--cyber-green),
+                    0 0 20px var(--cyber-green),
+                    0 0 40px var(--cyber-blue);
+            }
+            50% { 
+                opacity: 0.8;
+                text-shadow: 
+                    0 0 2px var(--cyber-green),
+                    0 0 5px var(--cyber-green),
+                    0 0 10px var(--cyber-green),
+                    0 0 20px var(--cyber-blue);
+            }
+            75% {
+                opacity: 0.9;
+                text-shadow: 
+                    0 0 8px var(--cyber-green),
+                    0 0 15px var(--cyber-green),
+                    0 0 25px var(--cyber-green),
+                    0 0 35px var(--cyber-blue);
+            }
+        }
+
+        @keyframes matrixScan {
+            0% {
+                transform: translateX(-100%) skewX(-15deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateX(200%) skewX(-15deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* About Me Section - Skinnier */
+        .about {
+            background: rgba(20, 20, 31, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            padding: 3rem;
+            margin: 2rem auto;
+            max-width: 900px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            padding-right: 1rem;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            font-size: 1rem;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem;
+            background: rgba(0, 212, 255, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            transition: all 0.3s ease;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .highlight-item:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.1);
+        }
+
+        .highlight-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .highlight-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .highlight-value {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .highlight-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 0.2rem;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .skills-container {
+            margin-top: 1.5rem;
+        }
+
+        .skill-category {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-category h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .skill-category h4::before {
+            content: '>';
+            color: var(--accent);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .skill-tag {
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--accent);
+            padding: 0.4rem 1rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .skill-tag:hover {
+            background: rgba(0, 212, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.2);
+        }
+
+        .skill-tag img {
+            width: 16px;
+            height: 16px;
+        }
+
+        .about-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-card {
+            background: rgba(20, 20, 31, 0.4);
+            border-radius: 10px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 350px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient);
+        }
+
+        .profile-image {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            margin: 0 auto 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid rgba(20, 20, 31, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.2);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .marine-flag {
+            width: 100%;
+            height: 100%;
+            background: url('https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGgxOXFzNmh0Y3JmZXJhdmRweDlnYmhtYjR1NnFrYXpxcWNqNWp1bCZlcD12MV9pbnRlcm5hbF9naWZfYnl_aWQmY3Q9Zw/xT1Ra3T9zCBEA2n3va/giphy.gif') center/cover no-repeat;
+            border-radius: 50%;
+        }
+
+        .profile-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .profile-title {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .profile-stat {
+            text-align: center;
+            padding: 0.8rem;
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 0.3rem;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .profile-interests {
+            margin-top: 1.5rem;
+        }
+
+        .profile-interests h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--text-primary);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .interest-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            justify-content: center;
+        }
+
+        .interest-tag {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        /* Certifications Section */
+        .certifications {
+            text-align: center;
+            padding: 3rem 5%;
+            background: rgba(20, 20, 31, 0.3);
+            border-radius: 10px;
+            margin: 2rem auto;
+            max-width: 900px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .cert-card {
+            background: rgba(20, 20, 31, 0.4);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .cert-logo {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            filter: grayscale(0.8);
+            transition: all 0.3s ease;
+        }
+
+        .cert-card:hover .cert-logo {
+            filter: grayscale(0);
+            transform: scale(1.1);
+        }
+
+        .cert-card h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .cert-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: var(--gradient);
+            color: white;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            font-family: 'Share Tech Mono', monospace;
         }
 
         /* Projects Grid */
@@ -208,11 +684,11 @@
         }
 
         .project-card {
-            background: var(--bg-card);
-            border-radius: 20px;
+            background: rgba(20, 20, 31, 0.4);
+            border-radius: 10px;
             padding: 2rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease; /* Added 'ease' */
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
@@ -226,7 +702,7 @@
             height: 4px;
             background: var(--gradient);
             transform: scaleX(0);
-            transition: transform 0.3s ease; /* Added 'ease' */
+            transition: transform 0.3s ease;
         }
 
         .project-card:hover {
@@ -249,11 +725,13 @@
             font-weight: 600;
             margin-bottom: 1rem;
             color: var(--accent);
+            font-family: 'Orbitron', sans-serif;
         }
 
         .project-card p {
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
+            font-family: 'Share Tech Mono', monospace;
         }
 
         .tech-stack {
@@ -267,34 +745,41 @@
             background: rgba(0, 212, 255, 0.1);
             color: var(--accent);
             padding: 0.3rem 0.8rem;
-            border-radius: 20px;
+            border-radius: 4px;
             font-size: 0.85rem;
             font-weight: 500;
             border: 1px solid rgba(0, 212, 255, 0.3);
-        }
-
-        .project-stats {
             display: flex;
-            gap: 1.5rem;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Share Tech Mono', monospace;
         }
 
-        .stat {
+        .tech-tag img {
+            width: 14px;
+            height: 14px;
+        }
+
+        .project-links {
             display: flex;
-            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1.5rem;
         }
 
-        .stat-value {
-            font-size: 1.5rem;
-            font-weight: 700;
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-family: 'Share Tech Mono', monospace;
         }
 
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
+        .project-link:hover {
+            gap: 0.8rem;
         }
 
         /* Blog Section */
@@ -306,12 +791,12 @@
         }
 
         .blog-card {
-            background: var(--bg-card);
-            border-radius: 15px;
+            background: rgba(20, 20, 31, 0.4);
+            border-radius: 10px;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease; /* Added 'ease' */
-            text-decoration: none; /* Added to make card clickable */
+            transition: all 0.3s ease;
+            text-decoration: none;
             color: var(--text-primary);
             display: flex;
             flex-direction: column;
@@ -323,11 +808,10 @@
             box-shadow: 0 15px 40px rgba(0, 212, 255, 0.15);
         }
         
-        /* Updated Blog Image */
         .blog-image {
             width: 100%;
             height: 200px;
-            background-color: var(--bg-dark); /* Fallback */
+            background-color: var(--bg-dark);
             background-size: cover;
             background-position: center;
             display: flex;
@@ -342,7 +826,7 @@
             padding: 1.5rem;
             display: flex;
             flex-direction: column;
-            flex-grow: 1; /* Makes content fill space */
+            flex-grow: 1;
         }
 
         .blog-date {
@@ -350,6 +834,7 @@
             font-size: 0.9rem;
             font-weight: 500;
             margin-bottom: 0.5rem;
+            font-family: 'Share Tech Mono', monospace;
         }
 
         .blog-card h3 {
@@ -357,30 +842,34 @@
             font-weight: 600;
             margin-bottom: 0.8rem;
             color: var(--text-primary);
+            font-family: 'Orbitron', sans-serif;
         }
 
         .blog-card p {
             color: var(--text-secondary);
             font-size: 0.95rem;
             line-height: 1.6;
-            flex-grow: 1; /* Pushes source to bottom */
+            flex-grow: 1;
             margin-bottom: 1rem;
+            font-family: 'Share Tech Mono', monospace;
         }
 
         .blog-source {
             display: inline-block;
-            margin-top: auto; /* Pushes to bottom */
+            margin-top: auto;
             color: var(--accent);
             font-size: 0.9rem;
             font-weight: 500;
             text-decoration: none;
+            font-family: 'Share Tech Mono', monospace;
         }
 
         .loading {
             text-align: center;
             padding: 3rem;
             color: var(--text-secondary);
-            grid-column: 1 / -1; /* Span full grid width */
+            grid-column: 1 / -1;
+            font-family: 'Share Tech Mono', monospace;
         }
 
         /* Contact Section */
@@ -392,12 +881,12 @@
         }
 
         .contact-card {
-            background: var(--bg-card);
+            background: rgba(20, 20, 31, 0.4);
             padding: 2rem;
-            border-radius: 15px;
+            border-radius: 10px;
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease; /* Added 'ease' */
+            transition: all 0.3s ease;
         }
 
         .contact-card:hover {
@@ -414,16 +903,19 @@
             font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
+            font-family: 'Orbitron', sans-serif;
         }
 
         .contact-card a {
             color: var(--accent);
             text-decoration: none;
             word-break: break-all;
+            font-family: 'Share Tech Mono', monospace;
         }
         
         .contact-card p {
             color: var(--text-secondary);
+            font-family: 'Share Tech Mono', monospace;
         }
 
         /* Footer */
@@ -432,29 +924,14 @@
             padding: 3rem 5%;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--text-secondary);
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            font-family: 'Share Tech Mono', monospace;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 3rem; /* Slightly larger than before */
+            .cyber-name {
+                font-size: 3rem;
+                letter-spacing: 2px;
             }
             .hero .subtitle {
                 font-size: 1.3rem;
@@ -474,7 +951,31 @@
                 font-size: 1.2rem;
             }
             section {
-                padding: 4rem 5%;
+                padding: 3rem 5%;
+            }
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .about-text {
+                padding-right: 0;
+            }
+            .about-highlights {
+                grid-template-columns: 1fr;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            .cert-grid {
+                grid-template-columns: 1fr;
+            }
+            .tech-logos {
+                gap: 1rem;
+                margin: 2rem 0 3rem 0;
+            }
+            .tech-logo {
+                width: 40px;
+                height: 40px;
             }
         }
     </style>
@@ -488,8 +989,10 @@
         <div class="container">
             <div class="logo">Vance Frommer</div>
             <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#certifications">Certifications</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#blog">AI Blog</a></li>
+                <li><a href="#blog">Blog</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -497,14 +1000,186 @@
 
     <section class="hero">
         <div class="hero-content">
-            <h1>VANCE FROMMER</h1>
-            <div class="subtitle">AI Developer & SaaS Architect</div>
+            <div class="cyber-name">VANCE FROMMER</div>
+            <div class="subtitle">Automation & AI Developer</div>
             <p class="description">
-                Passionate AI developer specializing in building intelligent SaaS products that leverage cutting-edge machine learning technologies. Expert in designing scalable AI solutions, implementing neural networks, and creating automation systems that transform business operations.
+                Passionate developer specializing in building intelligent automation systems and AI tools. Former Marine with a mission to master full-stack automation engineering and AI integration through hands-on projects.
             </p>
+            <div class="tech-logos">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="tech-logo" alt="Python">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="tech-logo" alt="JavaScript">
+                <img src="https://img.icons8.com/?size=100&id=AqYCfGyGXlO7&format=png&color=FFFFFF" class="tech-logo" alt="Flask">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" class="tech-logo" alt="Docker">
+                <img src="https://img.icons8.com/?size=100&id=al1VlNCK9eK5&format=png&color=FFFFFF" class="tech-logo" alt="AWS">
+                <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/github-white-icon.png" class="tech-logo" alt="Git">
+            </div>
             <div class="cta-buttons">
                 <a href="#projects" class="btn btn-primary">View Projects</a>
                 <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>From Marine to Machine Learning</h3>
+                <p>Former United States Marine transitioning into the world of AI development. My journey into technology started long before my professional career - from building my own PCs as a teenager to creating home labs, setting up servers, and exploring automation.</p>
+                
+                <p>With one year of dedicated development experience, I'm rapidly expanding my skills through hands-on projects and professional certifications. My Marine Corps background instilled in me the discipline, problem-solving skills, and determination needed to excel in the fast-paced world of technology.</p>
+                
+                <div class="about-highlights">
+                    <div class="highlight-item">
+                        <div class="highlight-icon">🚀</div>
+                        <div class="highlight-text">
+                            <div class="highlight-value">1+</div>
+                            <div class="highlight-label">Year Experience</div>
+                        </div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">💼</div>
+                        <div class="highlight-text">
+                            <div class="highlight-value">4</div>
+                            <div class="highlight-label">Certifications in Progress</div>
+                        </div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">⚙️</div>
+                        <div class="highlight-text">
+                            <div class="highlight-value">15+</div>
+                            <div class="highlight-label">Projects Built</div>
+                        </div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">🎯</div>
+                        <div class="highlight-text">
+                            <div class="highlight-value">100%</div>
+                            <div class="highlight-label">Self-Taught</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h4>Current Certifications in Progress</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                                Python PCEP/PCAP
+                            </span>
+                            <span class="skill-tag">
+                                <img src="https://img.icons8.com/?size=100&id=al1VlNCK9eK5&format=png&color=FFFFFF" alt="AWS">
+                                AWS Certified Developer
+                            </span>
+                            <span class="skill-tag">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker">
+                                Docker Certified Associate
+                            </span>
+                            <span class="skill-tag">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="AI">
+                                AI Developer Certificate
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Technical Stack</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                                Python
+                            </span>
+                            <span class="skill-tag">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+                                JavaScript
+                            </span>
+                            <span class="skill-tag">
+                                <img src="https://img.icons8.com/?size=100&id=AqYCfGyGXlO7&format=png&color=FFFFFF" alt="Flask">
+                                Flask
+                            </span>
+                            <span class="skill-tag">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" alt="FastAPI">
+                                FastAPI
+                            </span>
+                            <span class="skill-tag">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL">
+                                PostgreSQL
+                            </span>
+                            <span class="skill-tag">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker">
+                                Docker
+                            </span>
+                            <span class="skill-tag">
+                                <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/github-white-icon.png" alt="Git">
+                                Git
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-visual">
+                <div class="profile-card">
+                    <div class="profile-image">
+                        <div class="marine-flag"></div>
+                    </div>
+                    <h3>Vance Frommer</h3>
+                    <div class="profile-title">Automation & AI Developer</div>
+                    
+                    <div class="profile-stats">
+                        <div class="profile-stat">
+                            <div class="stat-number">1yr</div>
+                            <div class="stat-label">Dev Experience</div>
+                        </div>
+                        <div class="profile-stat">
+                            <div class="stat-number">4</div>
+                            <div class="stat-label">Active Certs</div>
+                        </div>
+                    </div>
+                    
+                    <p>Bringing Marine Corps discipline to AI development. Building the future one algorithm at a time.</p>
+                    
+                    <div class="profile-interests">
+                        <h4>Tech Interests</h4>
+                        <div class="interest-tags">
+                            <span class="interest-tag">Home Labs</span>
+                            <span class="interest-tag">Automation</span>
+                            <span class="interest-tag">Server Management</span>
+                            <span class="interest-tag">AI Ethics</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications" class="certifications">
+        <h2>Certifications & Progress</h2>
+        <div class="cert-grid">
+            <div class="cert-card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="cert-logo" alt="Python">
+                <h4>Python PCEP/PCAP</h4>
+                <p>Python Institute Certification</p>
+                <span class="status-badge">In Progress</span>
+            </div>
+            <div class="cert-card">
+                <img src="https://img.icons8.com/?size=100&id=al1VlNCK9eK5&format=png&color=FFFFFF" class="cert-logo" alt="AWS">
+                <h4>AWS Developer</h4>
+                <p>AWS Certified Developer</p>
+                <span class="status-badge">Planned</span>
+            </div>
+            <div class="cert-card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" class="cert-logo" alt="Docker">
+                <h4>Docker Associate</h4>
+                <p>Docker Certified Associate</p>
+                <span class="status-badge">Planned</span>
+            </div>
+            <div class="cert-card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" class="cert-logo" alt="AI">
+                <h4>AI Developer</h4>
+                <p>AI Developer Certificate</p>
+                <span class="status-badge">Planned</span>
             </div>
         </div>
     </section>
@@ -514,157 +1189,135 @@
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-icon">🤖</div>
-                <h3>Neural Sentiment Engine</h3>
-                <p>Advanced NLP system processing 10M+ social media posts daily with 94% accuracy. Implements transformer-based architecture for real-time sentiment analysis and trend prediction.</p>
+                <h3>Automation & AI Developer Roadmap</h3>
+                <p>A structured 15-month journey to becoming a Full-Stack Automation Engineer + AI Integrator. Documenting progress through Python foundations, Flask development, AI systems, and cloud deployment.</p>
                 <div class="tech-stack">
-                    <span class="tech-tag">PyTorch</span>
-                    <span class="tech-tag">BERT</span>
-                    <span class="tech-tag">Kubernetes</span>
-                    <span class="tech-tag">Redis</span>
+                    <span class="tech-tag">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                        Python
+                    </span>
+                    <span class="tech-tag">
+                        <img src="https://img.icons8.com/?size=100&id=AqYCfGyGXlO7&format=png&color=FFFFFF" alt="Flask">
+                        Flask
+                    </span>
+                    <span class="tech-tag">
+                        <img src="https://img.icons8.com/?size=100&id=al1VlNCK9eK5&format=png&color=FFFFFF" alt="AWS">
+                        AWS
+                    </span>
+                    <span class="tech-tag">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker">
+                        Docker
+                    </span>
                 </div>
-                <div class="project-stats">
-                    <div class="stat">
-                        <div class="stat-value">94%</div>
-                        <div class="stat-label">Accuracy</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">10M+</div>
-                        <div class="stat-label">Daily Posts</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">45ms</div>
-                        <div class="stat-label">Avg Latency</div>
-                    </div>
+                <div class="project-links">
+                    <a href="https://github.com/Vantix-1/automation-ai-developer" target="_blank" class="project-link">
+                        <span>View on GitHub</span> →
+                    </a>
                 </div>
             </div>
 
             <div class="project-card">
-                <div class="project-icon">🎯</div>
-                <h3>Predictive Analytics Platform</h3>
-                <p>ML-powered forecasting system for e-commerce businesses. Combines time-series analysis with deep learning to predict customer behavior and optimize inventory management.</p>
+                <div class="project-icon">🐍</div>
+                <h3>Python Crash Course Work</h3>
+                <p>Comprehensive Python learning journey following "Python Crash Course, 3rd Edition". Completed chapters 1-9 covering variables, data structures, functions, classes, and OOP principles.</p>
                 <div class="tech-stack">
-                    <span class="tech-tag">TensorFlow</span>
-                    <span class="tech-tag">LSTMs</span>
-                    <span class="tech-tag">FastAPI</span>
-                    <span class="tech-tag">PostgreSQL</span>
+                    <span class="tech-tag">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                        Python
+                    </span>
+                    <span class="tech-tag">
+                        <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/github-white-icon.png" alt="Git">
+                        Git
+                    </span>
                 </div>
-                <div class="project-stats">
-                    <div class="stat">
-                        <div class="stat-value">87%</div>
-                        <div class="stat-label">Prediction Accuracy</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">$2.4M</div>
-                        <div class="stat-label">Cost Savings</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">500+</div>
-                        <div class="stat-label">Clients</div>
-                    </div>
+                <div class="project-links">
+                    <a href="https://github.com/Vantix-1/python_work" target="_blank" class="project-link">
+                        <span>View on GitHub</span> →
+                    </a>
                 </div>
             </div>
 
             <div class="project-card">
-                <div class="project-icon">👁️</div>
-                <h3>Vision AI Pipeline</h3>
-                <p>Real-time computer vision system for quality control in manufacturing. Detects defects with superhuman accuracy using custom CNN architecture and edge deployment.</p>
+                <div class="project-icon">📋</div>
+                <h3>Enhanced To-Do CLI App</h3>
+                <p>Advanced command-line to-do application with priorities, deadlines, and persistent storage. Features task categorization, due date tracking, and JSON-based data persistence.</p>
                 <div class="tech-stack">
-                    <span class="tech-tag">OpenCV</span>
-                    <span class="tech-tag">YOLOv8</span>
-                    <span class="tech-tag">TensorRT</span>
-                    <span class="tech-tag">Docker</span>
+                    <span class="tech-tag">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                        Python
+                    </span>
+                    <span class="tech-tag">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/json/json-original.svg" alt="JSON">
+                        JSON
+                    </span>
                 </div>
-                <div class="project-stats">
-                    <div class="stat">
-                        <div class="stat-value">99.2%</div>
-                        <div class="stat-label">Detection Rate</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">120fps</div>
-                        <div class="stat-label">Processing Speed</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">40%</div>
-                        <div class="stat-label">Cost Reduction</div>
-                    </div>
+                <div class="project-links">
+                    <a href="https://github.com/Vantix-1/automation-ai-developer/tree/main/week2" target="_blank" class="project-link">
+                        <span>View on GitHub</span> →
+                    </a>
                 </div>
             </div>
 
             <div class="project-card">
-                <div class="project-icon">💬</div>
-                <h3>Intelligent Chatbot Suite</h3>
-                <p>GPT-powered conversational AI platform handling customer support for Fortune 500 companies. Features context-aware responses, multi-language support, and seamless human handoff.</p>
+                <div class="project-icon">🔐</div>
+                <h3>Password Generator & Security Tools</h3>
+                <p>Secure random password generator with customizable length and character sets. Includes additional security utilities for file cleanup and data protection automation.</p>
                 <div class="tech-stack">
-                    <span class="tech-tag">GPT-4</span>
-                    <span class="tech-tag">LangChain</span>
-                    <span class="tech-tag">React</span>
-                    <span class="tech-tag">WebSocket</span>
+                    <span class="tech-tag">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                        Python
+                    </span>
                 </div>
-                <div class="project-stats">
-                    <div class="stat">
-                        <div class="stat-value">1M+</div>
-                        <div class="stat-label">Daily Conversations</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">92%</div>
-                        <div class="stat-label">Resolution Rate</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">2.1s</div>
-                        <div class="stat-label">Avg Response</div>
-                    </div>
+                <div class="project-links">
+                    <a href="https://github.com/Vantix-1/automation-ai-developer/tree/main/week1" target="_blank" class="project-link">
+                        <span>View on GitHub</span> →
+                    </a>
                 </div>
             </div>
 
             <div class="project-card">
                 <div class="project-icon">📊</div>
-                <h3>AutoML Optimization Engine</h3>
-                <p>Automated machine learning platform that designs, trains, and deploys optimal models without manual intervention. Uses neural architecture search and hyperparameter optimization.</p>
+                <h3>Habit Tracker & Productivity Suite</h3>
+                <p>Comprehensive habit tracking system with JSON storage, progress visualization, and daily planning capabilities. Includes productivity tip bot and weekly report generation.</p>
                 <div class="tech-stack">
-                    <span class="tech-tag">AutoKeras</span>
-                    <span class="tech-tag">Optuna</span>
-                    <span class="tech-tag">MLflow</span>
-                    <span class="tech-tag">AWS</span>
+                    <span class="tech-tag">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                        Python
+                    </span>
+                    <span class="tech-tag">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/json/json-original.svg" alt="JSON">
+                        JSON
+                    </span>
                 </div>
-                <div class="project-stats">
-                    <div class="stat">
-                        <div class="stat-value">75%</div>
-                        <div class="stat-label">Time Saved</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">1000+</div>
-                        <div class="stat-label">Models Trained</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">15%</div>
-                        <div class="stat-label">Better Performance</div>
-                    </div>
+                <div class="project-links">
+                    <a href="https://github.com/Vantix-1/automation-ai-developer/tree/main/week2" target="_blank" class="project-link">
+                        <span>View on GitHub</span> →
+                    </a>
                 </div>
             </div>
 
             <div class="project-card">
-                <div class="project-icon">🔮</div>
-                <h3>Anomaly Detection System</h3>
-                <p>Unsupervised learning system for fraud detection and cybersecurity. Identifies unusual patterns in real-time across billions of transactions using isolation forests and autoencoders.</p>
+                <div class="project-icon">🌐</div>
+                <h3>Flask Dashboard & API Development</h3>
+                <p>Upcoming web dashboard projects turning Python automation scripts into interactive web interfaces. Planning REST APIs, login systems, and AI integration features.</p>
                 <div class="tech-stack">
-                    <span class="tech-tag">Scikit-learn</span>
-                    <span class="tech-tag">Apache Kafka</span>
-                    <span class="tech-tag">Spark</span>
-                    <span class="tech-tag">Grafana</span>
+                    <span class="tech-tag">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                        Python
+                    </span>
+                    <span class="tech-tag">
+                        <img src="https://img.icons8.com/?size=100&id=AqYCfGyGXlO7&format=png&color=FFFFFF" alt="Flask">
+                        Flask
+                    </span>
+                    <span class="tech-tag">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker">
+                        Docker
+                    </span>
                 </div>
-                <div class="project-stats">
-                    <div class="stat">
-                        <div class="stat-value">98.7%</div>
-                        <div class="stat-label">Detection Accuracy</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">$12M</div>
-                        <div class="stat-label">Fraud Prevented</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">3B+</div>
-                        <div class="stat-label">Transactions/Day</div>
-                    </div>
+                <div class="project-links">
+                    <a href="https://github.com/Vantix-1/automation-ai-developer/tree/main/week3" target="_blank" class="project-link">
+                        <span>View Roadmap</span> →
+                    </a>
                 </div>
             </div>
         </div>
@@ -683,7 +1336,7 @@
             <div class="contact-card">
                 <div class="contact-icon">📧</div>
                 <h3>Email</h3>
-                <a href="mailto:vance.frommer@aidev.com">vance.frommer@aidev.com</a>
+                <a href="mailto:vance@futurename">vance@futurename</a>
             </div>
             <div class="contact-card">
                 <div class="contact-icon">💼</div>
@@ -698,7 +1351,7 @@
             <div class="contact-card">
                 <div class="contact-icon">📍</div>
                 <h3>Location</h3>
-                <p>San Francisco, CA</p>
+                <p>El Mirage, AZ</p>
             </div>
         </div>
     </section>
@@ -708,7 +1361,7 @@
     </footer>
 
     <script>
-        // Animated background (Unchanged)
+        // Animated background
         const canvas = document.getElementById('bgCanvas');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
@@ -782,12 +1435,9 @@
             canvas.height = window.innerHeight;
         });
 
-        // Smooth scrolling is now handled by CSS 'scroll-behavior: smooth;'
-
-        // --- NEW: Fetch AI news from live API ---
+        // Fetch AI news from live API
         async function fetchAINews() {
             const container = document.getElementById('blogContainer');
-            // Using a free RSS-to-JSON API to pull from TechCrunch's AI feed
             const API_URL = 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ftechcrunch.com%2Fcategory%2Fartificial-intelligence%2Ffeed%2F';
 
             try {
@@ -798,19 +1448,14 @@
                 const data = await response.json();
 
                 if (data.status === 'ok') {
-                    // Get the latest 6 articles
                     const newsItems = data.items.slice(0, 6);
-
                     container.innerHTML = newsItems.map(item => {
-                        // Create a simple text-only excerpt
                         const excerpt = item.description.replace(/<[^>]*>/g, '').substring(0, 120) + '...';
-                        // Format the date
                         const pubDate = new Date(item.pubDate).toLocaleDateString('en-US', {
                             year: 'numeric',
                             month: 'long',
                             day: 'numeric'
                         });
-                        // Use article thumbnail if it exists, otherwise a fallback icon
                         const imageUrl = item.thumbnail ? `style="background-image: url(${item.thumbnail})"` : '';
                         const fallbackIcon = item.thumbnail ? '' : '📰';
 
@@ -835,9 +1480,7 @@
             }
         }
 
-        // Load news on page load
         document.addEventListener('DOMContentLoaded', fetchAINews);
-
     </script>
 </body>
 </html>
