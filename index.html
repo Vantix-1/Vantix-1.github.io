@@ -1556,7 +1556,7 @@
         canvas.height = window.innerHeight;
 
         const particles = [];
-        const particleCount = 80; // Reduced for mobile performance
+        const particleCount = 80;
 
         class Particle {
             constructor() {
@@ -1595,14 +1595,13 @@
                 particle.draw();
             });
 
-            // Connect nearby particles - reduced distance for mobile
             for (let i = 0; i < particles.length; i++) {
                 for (let j = i + 1; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
                     const distance = Math.sqrt(dx * dx + dy * dy);
 
-                    if (distance < 80) { // Reduced connection distance
+                    if (distance < 80) {
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
@@ -1623,62 +1622,127 @@
             canvas.height = window.innerHeight;
         });
 
-        // Fetch AI news from GNews API with CORS proxy
+        // API Configuration with your keys
+        const API_CONFIG = {
+            // Primary API - NewsAPI
+            newsapi: {
+                key: '18628e29345d40e48c19a7acc04c4948',
+                url: 'https://newsapi.org/v2/everything?q=artificial+intelligence+AI+machine+learning&language=en&sortBy=publishedAt&pageSize=6&apiKey='
+            },
+            // Backup API - GNews
+            gnews: {
+                key: '0b92405fa1cab17dd8a2b48092d754d5',
+                url: 'https://gnews.io/api/v4/search?q=artificial%20intelligence&lang=en&country=us&max=6&apikey='
+            }
+        };
+
+        // Fetch AI news with fallback system
         async function fetchAINews() {
             const container = document.getElementById('blogContainer');
-            const API_KEY = '0b92405fa1cab17dd8a2b48092d754d5';
             
-            // Using a CORS proxy to avoid CORS issues
-            const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/';
-            const API_URL = `${CORS_PROXY}https://gnews.io/api/v4/search?q=artificial%20intelligence%20AI&lang=en&country=us&max=6&apikey=${API_KEY}`;
-
+            // Try NewsAPI first
             try {
-                const response = await fetch(API_URL, {
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest'
-                    }
-                });
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                
-                const data = await response.json();
-
-                if (data.articles && data.articles.length > 0) {
-                    const newsItems = data.articles.slice(0, 6);
-                    container.innerHTML = newsItems.map(item => {
-                        const excerpt = item.description ? 
-                            item.description.substring(0, 120) + '...' : 
-                            'No description available. Click to read more.';
-                        const pubDate = new Date(item.publishedAt).toLocaleDateString('en-US', {
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric'
-                        });
-                        const imageUrl = item.image ? `style="background-image: url(${item.image})"` : '';
-                        const fallbackIcon = item.image ? '' : '🤖';
-
-                        return `
-                            <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="blog-card">
-                                <div class="blog-image" ${imageUrl}>${fallbackIcon}</div>
-                                <div class="blog-content">
-                                    <div class="blog-date">${pubDate}</div>
-                                    <h3>${item.title}</h3>
-                                    <p>${excerpt}</p>
-                                    <span class="blog-source">Read on ${item.source.name || 'GNews'}</span>
-                                </div>
-                            </a>
-                        `;
-                    }).join('');
-                } else {
-                    // Fallback to static AI news if API fails
-                    showFallbackNews();
-                }
+                await fetchWithNewsAPI();
+                return;
             } catch (error) {
-                console.error('Error fetching AI news:', error);
-                // Fallback to static AI news
-                showFallbackNews();
+                console.log('NewsAPI failed, trying GNews...');
+            }
+            
+            // Try GNews as backup
+            try {
+                await fetchWithGNews();
+                return;
+            } catch (error) {
+                console.log('GNews failed, using static content...');
+            }
+            
+            // Final fallback to static content
+            showFallbackNews();
+        }
+
+        async function fetchWithNewsAPI() {
+            const container = document.getElementById('blogContainer');
+            const API_URL = `${API_CONFIG.newsapi.url}${API_CONFIG.newsapi.key}`;
+            
+            const response = await fetch(API_URL);
+            if (!response.ok) throw new Error('NewsAPI failed');
+            
+            const data = await response.json();
+            
+            if (data.articles && data.articles.length > 0) {
+                container.innerHTML = data.articles.map(article => {
+                    const excerpt = article.description ? 
+                        article.description.substring(0, 120) + '...' : 
+                        'Click to read more about AI developments.';
+                    
+                    const pubDate = new Date(article.publishedAt).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    });
+                    
+                    const imageUrl = article.urlToImage ? 
+                        `style="background-image: url('${article.urlToImage}')"` : 
+                        `style="background-image: url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&q=80')"`;
+                    
+                    return `
+                        <a href="${article.url}" target="_blank" rel="noopener noreferrer" class="blog-card">
+                            <div class="blog-image" ${imageUrl}></div>
+                            <div class="blog-content">
+                                <div class="blog-date">${pubDate}</div>
+                                <h3>${article.title}</h3>
+                                <p>${excerpt}</p>
+                                <span class="blog-source">${article.source.name}</span>
+                            </div>
+                        </a>
+                    `;
+                }).join('');
+            } else {
+                throw new Error('No articles found');
+            }
+        }
+
+        async function fetchWithGNews() {
+            const container = document.getElementById('blogContainer');
+            const API_URL = `${API_CONFIG.gnews.url}${API_CONFIG.gnews.key}`;
+            
+            // Use CORS proxy for GNews
+            const proxyUrl = 'https://api.allorigins.win/raw?url=';
+            const response = await fetch(proxyUrl + encodeURIComponent(API_URL));
+            if (!response.ok) throw new Error('GNews failed');
+            
+            const data = await response.json();
+            
+            if (data.articles && data.articles.length > 0) {
+                container.innerHTML = data.articles.map(article => {
+                    const excerpt = article.description ? 
+                        article.description.substring(0, 120) + '...' : 
+                        'Click to read more about AI developments.';
+                    
+                    const pubDate = new Date(article.publishedAt).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    });
+                    
+                    const imageUrl = article.image ? 
+                        `style="background-image: url('${article.image}')"` : 
+                        `style="background-image: url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&q=80')"`;
+                    
+                    return `
+                        <a href="${article.url}" target="_blank" rel="noopener noreferrer" class="blog-card">
+                            <div class="blog-image" ${imageUrl}></div>
+                            <div class="blog-content">
+                                <div class="blog-date">${pubDate}</div>
+                                <h3>${article.title}</h3>
+                                <p>${excerpt}</p>
+                                <span class="blog-source">${article.source.name}</span>
+                            </div>
+                        </a>
+                    `;
+                }).join('');
+            } else {
+                throw new Error('No articles found');
             }
         }
 
@@ -1688,52 +1752,58 @@
             const fallbackNews = [
                 {
                     title: "AI Breakthrough in Medical Diagnosis",
-                    description: "Researchers develop new AI system that can detect diseases with 95% accuracy from medical images.",
+                    description: "Researchers develop new AI system that can detect diseases with 95% accuracy from medical images, revolutionizing healthcare diagnostics.",
                     date: "March 15, 2025",
                     url: "#",
-                    source: "AI Research Journal"
+                    source: "AI Research Journal",
+                    image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&q=80"
                 },
                 {
                     title: "Machine Learning Revolutionizes Climate Modeling",
-                    description: "Advanced neural networks are helping scientists predict climate patterns with unprecedented accuracy.",
+                    description: "Advanced neural networks are helping scientists predict climate patterns with unprecedented accuracy, enabling better environmental planning.",
                     date: "March 12, 2025",
                     url: "#",
-                    source: "Tech Innovation Daily"
+                    source: "Tech Innovation Daily",
+                    image: "https://images.unsplash.com/photo-1569163139394-de44cb54d5e8?w=400&q=80"
                 },
                 {
                     title: "The Future of AI in Automation",
-                    description: "How artificial intelligence is transforming industrial automation and creating new opportunities.",
+                    description: "How artificial intelligence is transforming industrial automation and creating new opportunities for efficiency and innovation across sectors.",
                     date: "March 10, 2025",
                     url: "#",
-                    source: "Automation Weekly"
+                    source: "Automation Weekly",
+                    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&q=80"
                 },
                 {
                     title: "Ethical AI: Challenges and Solutions",
-                    description: "Exploring the ethical considerations in AI development and deployment across industries.",
+                    description: "Exploring the ethical considerations in AI development and deployment across industries, with focus on bias mitigation and transparency.",
                     date: "March 8, 2025",
                     url: "#",
-                    source: "AI Ethics Review"
+                    source: "AI Ethics Review",
+                    image: "https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=400&q=80"
                 },
                 {
                     title: "Neural Networks in Natural Language Processing",
-                    description: "Breakthroughs in NLP are enabling more human-like interactions with AI systems.",
+                    description: "Breakthroughs in NLP are enabling more human-like interactions with AI systems, transforming customer service and content creation.",
                     date: "March 5, 2025",
                     url: "#",
-                    source: "Tech Research Hub"
+                    source: "Tech Research Hub",
+                    image: "https://images.unsplash.com/photo-1535223289827-42f1e9919769?w=400&q=80"
                 },
                 {
                     title: "AI-Powered Cybersecurity Solutions",
-                    description: "How machine learning is being used to detect and prevent cyber threats in real-time.",
+                    description: "How machine learning is being used to detect and prevent cyber threats in real-time, enhancing digital security across platforms.",
                     date: "March 3, 2025",
                     url: "#",
-                    source: "Security Tech News"
+                    source: "Security Tech News",
+                    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&q=80"
                 }
             ];
 
             container.innerHTML = fallbackNews.map(item => {
                 return `
                     <a href="${item.url}" class="blog-card">
-                        <div class="blog-image">🤖</div>
+                        <div class="blog-image" style="background-image: url('${item.image}')"></div>
                         <div class="blog-content">
                             <div class="blog-date">${item.date}</div>
                             <h3>${item.title}</h3>
