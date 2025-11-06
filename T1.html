@@ -1,0 +1,2532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vance Frommer | Automation & AI Developer</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Vance Frommer - Automation & AI Developer specializing in Python, Flask, and AI integration. Former Marine building intelligent systems.">
+    <meta name="keywords" content="AI Developer, Automation, Python, Flask, AWS, Docker, Marine Corps">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Vance Frommer | Automation & AI Developer">
+    <meta property="og:description" content="Building intelligent automation systems and AI tools. Former Marine turned developer.">
+    <meta property="og:type" content="website">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-card: rgba(20, 20, 31, 0.4);
+            --accent: #00d4ff;
+            --accent-glow: rgba(0, 212, 255, 0.3);
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-accent: linear-gradient(135deg, #00d4ff 0%, #667eea 100%);
+            --success: #00ff88;
+            --warning: #ffaa00;
+            --error: #ff4444;
+            --cyber-blue: #00d4ff;
+            --cyber-green: #00ff9d;
+            --cyber-purple: #764ba2;
+        }
+
+        /* Modern CSS Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Share Tech Mono', monospace;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.2;
+        }
+
+        .bg-animation canvas {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--accent);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section - Fixed for mobile */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 5% 2rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        /* Cyberpunk Name Animation - Optimized for mobile */
+        .cyber-name {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            color: var(--cyber-green);
+            animation: fadeInUp 1s ease-out 0.2s both, matrixFlicker 2s infinite;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 
+                0 0 5px var(--cyber-green),
+                0 0 10px var(--cyber-green),
+                0 0 20px var(--cyber-green),
+                0 0 40px var(--cyber-blue);
+            word-wrap: break-word;
+        }
+
+        .cyber-name::before {
+            content: 'VANCE FROMMER';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--cyber-blue), transparent);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: matrixScan 3s linear infinite;
+            opacity: 0.7;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.4s both;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .hero .description {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 1s ease-out 0.6s both;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .tech-logos {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0 2.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .tech-logo {
+            width: 40px;
+            height: 40px;
+            filter: grayscale(1) brightness(0.8);
+            transition: all 0.3s ease;
+            opacity: 0.7;
+        }
+
+        .tech-logo:hover {
+            filter: grayscale(0) brightness(1);
+            opacity: 1;
+            transform: translateY(-5px);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            animation: fadeInUp 1s ease-out 0.8s both;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid transparent;
+            width: 100%;
+            max-width: 250px;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 10px 30px var(--accent-glow);
+            border: 1px solid var(--accent);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px var(--accent-glow);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            background: transparent;
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: var(--bg-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Section styling */
+        section {
+            padding: 3rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* New Cyberpunk Animations */
+        @keyframes matrixFlicker {
+            0%, 100% { 
+                opacity: 1;
+                text-shadow: 
+                    0 0 5px var(--cyber-green),
+                    0 0 10px var(--cyber-green),
+                    0 0 20px var(--cyber-green),
+                    0 0 40px var(--cyber-blue);
+            }
+            50% { 
+                opacity: 0.8;
+                text-shadow: 
+                    0 0 2px var(--cyber-green),
+                    0 0 5px var(--cyber-green),
+                    0 0 10px var(--cyber-green),
+                    0 0 20px var(--cyber-blue);
+            }
+            75% {
+                opacity: 0.9;
+                text-shadow: 
+                    0 0 8px var(--cyber-green),
+                    0 0 15px var(--cyber-green),
+                    0 0 25px var(--cyber-green),
+                    0 0 35px var(--cyber-blue);
+            }
+        }
+
+        @keyframes matrixScan {
+            0% {
+                transform: translateX(-100%) skewX(-15deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateX(200%) skewX(-15deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* About Me Section - Optimized for mobile */
+        .about {
+            background: rgba(20, 20, 31, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            padding: 2rem;
+            margin: 1rem auto;
+            max-width: 900px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-text {
+            padding-right: 0;
+        }
+
+        .about-text h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            color: var(--accent);
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            font-family: 'Share Tech Mono', monospace;
+            text-align: center;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin: 1.2rem 0;
+            width: 100%;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem;
+            background: rgba(0, 212, 255, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            transition: all 0.3s ease;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .highlight-item:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.1);
+        }
+
+        .highlight-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .highlight-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .highlight-value {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .highlight-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 0.2rem;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .skills-container {
+            margin-top: 1.2rem;
+            width: 100%;
+        }
+
+        .skill-category {
+            margin-bottom: 1.2rem;
+        }
+
+        .skill-category h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .skill-category h4::before {
+            content: '>';
+            color: var(--accent);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .skill-tag {
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--accent);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .skill-tag:hover {
+            background: rgba(0, 212, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.2);
+        }
+
+        .skill-tag img {
+            width: 14px;
+            height: 14px;
+        }
+
+        .about-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .profile-card {
+            background: rgba(20, 20, 31, 0.4);
+            border-radius: 10px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 350px;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient);
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid rgba(20, 20, 31, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.2);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .marine-flag {
+            width: 100%;
+            height: 100%;
+            background: url('https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGgxOXFzNmh0Y3JmZXJhdmRweDlnYmhtYjR1NnFrYXpxcWNqNWp1bCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT1Ra3T9zCBEA2n3va/giphy.gif') center/cover no-repeat;
+            border-radius: 50%;
+        }
+
+        .profile-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .profile-title {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+            margin: 1.2rem 0;
+        }
+
+        .profile-stat {
+            text-align: center;
+            padding: 0.7rem;
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: 0.3rem;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .profile-interests {
+            margin-top: 1.2rem;
+        }
+
+        .profile-interests h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.7rem;
+            color: var(--text-primary);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .interest-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            justify-content: center;
+        }
+
+        .interest-tag {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        /* Certifications Section */
+        .certifications {
+            text-align: center;
+            padding: 2rem 5%;
+            background: rgba(20, 20, 31, 0.3);
+            border-radius: 10px;
+            margin: 1rem auto;
+            max-width: 900px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .cert-card {
+            background: rgba(20, 20, 31, 0.4);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .cert-logo {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 1rem;
+            filter: grayscale(0.8);
+            transition: all 0.3s ease;
+        }
+
+        .cert-card:hover .cert-logo {
+            filter: grayscale(0);
+            transform: scale(1.1);
+        }
+
+        .cert-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .cert-card p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: var(--gradient);
+            color: white;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        /* Projects Grid - Mobile optimized */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: rgba(20, 20, 31, 0.4);
+            border-radius: 10px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--accent);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.2rem;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .tech-tag {
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--accent);
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .tech-tag img {
+            width: 12px;
+            height: 12px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.2rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .project-link:hover {
+            gap: {
+            gap: 0 0.8rem.8rem;
+       ;
+        }
+
+        /* }
+
+        /* Blog Section Blog Section */
+        .blog */
+        .blog-grid-grid {
+            display {
+            display: grid: grid;
+            grid;
+            grid-template-column-template-columns: 1fr;
+            gap:s: 1fr;
+            1.5 gap: 1.5rem;
+            margin-toprem;
+            margin-top:: 2rem 2rem;
+        }
+
+        .blog-card {
+            background: rgba(20, 20, 31, 0.4);
+            border-radius: 10px;
+        }
+
+        .blog-card {
+            background: rgba(20, 20, 31, 0.4);
+            border-radius: 10px;
+            overflow:;
+            overflow: hidden;
+            hidden;
+            border: border:  11px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text-primary);
+            display: flex;
+           px solid rgba(255, 255, 255,  flex-direction: column;
+        }
+
+        .0.1);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text-primary);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transformblog-card:hover {
+            transform: translateY: translateY(-5px);
+            border-color: var(--(-5px);
+            border-color: var(--accent);
+           accent);
+            box-shadow:  box-shadow: 00 10px  10px 30px30px rgba(0 rgba(0,, 212,  212, 255,255, 0.15);
+        }
+        
+        .blog-image {
+            width: 0.15);
+        }
+        
+        .blog-image {
+            width: 100%;
+            height 100%;
+            height:: 160px;
+            160px;
+            background background-color: var(--bg-color: var(--bg-dark);
+-dark);
+            background-size:            background-size: cover;
+            cover;
+            background-position: center;
+ background-position: center;
+            display:            display: flex;
+            align-items flex;
+            align-items: center;
+: center;
+            justify-content: center;
+            justify-content: center;
+            font            font-size: 2-size: 2.5.5rem;
+rem;
+            color:            color: var(--accent);
+            flex var(--accent);
+            flex-shrink-shrink: 0;
+        }
+
+        .: 0;
+        }
+
+       blog-content {
+            padding .blog-content {
+            padding: 1.2rem;
+           : 1.2rem;
+            display: display: flex;
+            flex-direction: column;
+ flex;
+            flex-direction: column;
+            flex-grow:             flex-grow: 1;
+        }
+
+1;
+        }
+
+        .        .blog-date {
+blog-date {
+                       color: var color: var(--accent(--accent);
+           );
+            font-size font-size: 0.: 0.8585rem;
+            font-weightrem;
+            font-weight: 500;
+: 500;
+            margin            margin-bottom: 0-bottom: 0.5rem;
+.5rem;
+                       font-family: font-family: 'Share 'Share Tech Mono', mon Tech Mono', monospaceospace;
+;
+               }
+
+        }
+
+        . .blog-card h3 {
+            font-size: 1.2rem;
+blog-card h3 {
+            font-size: 1.           2rem;
+            font-weight: 600;
+            font-weight: 600;
+            margin-bottom margin-bottom: 0: 0.7.7rem;
+           rem;
+            color color: var: var(--text(--text-primary);
+           -primary);
+            font-family: font-family: 'Orbitron', sans 'Orbitron', sans-serif;
+       -serif;
+        }
+
+        .blog-card p }
+
+        .blog-card p {
+ {
+            color:            color: var(-- var(--text-secondarytext-secondary);
+            font-size: 0.85rem;
+            line-height: 1.5;
+);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            flex-grow: 1;
+            margin-bottom: 1rem            flex-grow: 1;
+            margin-bottom: 1rem;
+;
+            font-family:            font-family: 'Share Tech 'Share Tech Mono', Mono', monospace monospace;
+;
+        }
+
+        }
+
+        .blog        .blog-source {
+-source {
+            display: inline            display: inline-block;
+-block;
+            margin-top            margin-top: auto: auto;
+            color:;
+            color: var(-- var(--accent);
+            font-size: 0.accent);
+            font-size: 0.85rem;
+            font-weight85rem;
+            font-weight: 500;
+: 500;
+            text-decoration            text-decoration: none: none;
+            font-family;
+            font-family: 'Share: 'Share Tech Mono', mon Tech Mono', monospace;
+ospace;
+        }
+
+               }
+
+        .loading {
+ .loading {
+            text-align:            text-align: center;
+ center;
+            padding:            padding: 2rem 2rem;
+            color;
+            color: var: var(--text-secondary);
+(--text-secondary);
+            grid            grid-column: 1 /-column: 1 / -1;
+            -1;
+            font-family: 'Share font-family: 'Share Tech Mono', monospace;
+        }
+
+        /* Contact Section */
+        .contact Tech Mono', monospace;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+           ;
+            gap:  gap: 11..5rem5rem;
+            margin-top: ;
+            margin-top: 22rem;
+        }
+
+        .rem;
+        }
+
+        .contact-card {
+            background: rgba(contact-card {
+            background: rgba(20, 20, 3120, 20, 31, 0.4);
+            padding:, 0.4);
+            padding: 1.5rem;
+ 1.5rem;
+            border-radius:            border-radius:  10px;
+           10px;
+            text text-align: center;
+-align: center;
+            border: 1            border: 1pxpx solid rgba(255 solid rgba(255, 255, 255, 255, 255, 0., 0.1);
+            transition: all 1);
+            transition: all 0.0.3s ease3s ease;
+       ;
+        }
+
+        . }
+
+        .contactcontact-card:hover {
+            border-card:hover {
+            border-color-color: var(--ac: var(--accent);
+            transformcent);
+            transform: translate: translateY(-5pxY(-5px);
+       );
+        }
+
+        }
+
+        .contact .contact-icon {
+            font-icon {
+            font-size-size: 2: 2rem;
+rem;
+            margin-bottom:            margin-bottom: 1rem;
+ 1rem;
+        }
+
+        }
+
+        .contact-card        .contact-card h h3 {
+           3 {
+            font-size font-size: 1.1: 1.1rem;
+           rem;
+            font-weight font-weight: 600;
+            margin: 600;
+            margin-bottom: 0.5-bottom: 0.5rem;
+            font-family: 'Orbitronrem;
+            font-family: 'Or', sans-serif;
+        }
+
+bitron', sans-serif;
+               .contact-card a {
+            color }
+
+        .contact-card a {
+            color: var(--accent);
+            text-decoration: none;
+: var(--accent);
+            text-decoration: none;
+            word-bre            word-break: breakak: break-all-all;
+            font;
+            font-family:-family: 'Share Tech 'Share Tech Mono', mon Mono', monospace;
+ospace;
+            font            font-size: 0-size: 0..9rem;
+9rem;
+        }
+        }
+        
+        .contact        
+        .contact-card p {
+            color: var(--text-secondary-card p {
+            color: var(--text-secondary);
+           );
+ font-family: 'Share Tech Mono            font-family: 'Share Tech Mono', monospace;
+            font-size', monospace;
+            font-size:: 0.9rem;
+        }
+
+        0.9rem;
+        }
+
+        /* Footer /* Footer */
+        */
+        footer {
+ footer {
+            text-align:            text-align: center;
+ center;
+            padding:            padding:  2rem 5%;
+2rem 5%;
+                       border-top: border-top:  1px solid rgba1px solid rgba((255, 255255, 255, 255, 0.1);
+            color, 255, 0.1);
+            color: var(--text-secondary);
+            font-family: 'Share Tech: var(--text-secondary);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.9 Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Menu */
+rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            height: 100100%;
+            width: 80%;
+            height: 100vhvh;
+           ;
+            background: rgba( background: rgba(10, 10, 15, 0.9810, 10, 15, 0);
+            backdrop-filter.98);
+            backdrop-filter: blur(15px);
+: blur(15px);
+            z-index:             z-index: 1001;
+            transition1001;
+            transition: right 0.3: right 0.3s ease;
+           s ease;
+            display: flex;
+            display: flex;
+            flex-direction: column;
+            padding: 5rem 2rem  flex-direction: column;
+            padding: 5rem 2rem 2rem;
+            border2rem;
+            border-left-left: 1px: 1px solid rgba(255, 255, 255, 0.1);
+ solid rgba(255, 255, 255, 0.1);
+        }
+
+        .        }
+
+        .mobile-menumobile-menu.active {
+           .active {
+            right: 0;
+        }
+
+        right: 0;
+        }
+
+        .mobile-menu ul .mobile-menu ul {
+            list-style: none;
+ {
+            list-style: none;
+                       display: flex;
+            flex-direction: display: flex;
+            flex-direction: column column;
+            gap: 1;
+            gap: 1..5rem;
+        }
+
+5rem;
+        }
+
+        .mobile-menu        .mobile-menu a a {
+            color: var {
+            color: var(--text-secondary(--text-secondary);
+);
+            text-decoration: none;
+            font-size            text-decoration: none;
+            font-size:: 1.2rem;
+            1.2rem;
+            transition: transition: color 0.3s ease;
+ color 0.3s ease;
+            font            font-family: 'Share Tech-family: 'Share Tech Mono', Mono', monospace;
+        monospace;
+        }
+
+        }
+
+        .mobile-menu a:hover {
+            color .mobile-menu a:hover {
+            color: var(--accent);
+        }
+
+        .: var(--accent);
+        }
+
+        .close-menu {
+           close-menu {
+            position: absolute;
+            top position: absolute;
+            top: 1.5rem: 1.5rem;
+            right:;
+            right: 1.5 1.5rem;
+            background:rem;
+            background: none none;
+            border:;
+            border: none;
+            color: none;
+            color: var var(--accent);
+(--accent);
+            font-size:             font-size: 11.5rem;
+.5rem;
+            cursor: pointer;
+            cursor: pointer;
+               }
+
+        /* Respons }
+
+        /* Responsive Designive Design */
+ */
+        @media (min        @media (min-width: 768px) {
+-width: 768px) {
+            /*            /* Tablet Tablet styles */
+ styles */
+            .cy            .cyber-name {
+ber-name {
+                font                font-size:-size: 3.5 3.5rem;
+            }
+            
+rem;
+            }
+            
+            .hero            .hero .subtitle {
+ .subtitle {
+                font                font-size: 1-size: 1.5.5rem;
+            }
+rem;
+            }
+            
+            .hero            
+            .hero . .description {
+                font-size: 1.description {
+                font-size: 1.1rem;
+           1rem;
+            }
+            
+            . }
+            
+            .ctacta-butt-buttons {
+                flexons {
+                flex-direction: row-direction: row;
+            }
+            
+           ;
+            }
+            
+            .btn {
+                .btn {
+                width: auto;
+ width: auto;
+            }
+            
+            .about            }
+            
+            .about-content {
+-content {
+                grid-template                grid-template-columns:-columns: 1 1fr fr 1fr1fr;
+               ;
+                display: grid;
+ display: grid;
+            }
+            }
+            
+            .            
+            .aboutabout-text-text {
+                {
+                text-align: left text-align: left;
+            }
+;
+            }
+            
+            .about-text h            
+            .about-text h3 {
+                text3 {
+                text-align: left-align: left;
+           ;
+            }
+            
+ }
+            
+            .about            .about-text p {
+-text p {
+                text                text-align: left;
+-align: left;
+            }
+            
+            .about-highlights {
+                grid-template-columns: 1fr 1fr            }
+            
+            .about-highlights {
+                grid-template-columns: 1fr 1;
+            }
+            
+           fr;
+            }
+            
+            .cert-grid {
+ .cert-grid {
+                grid                grid-template-column-template-columnss: repeat(2: repeat(2,, 1fr);
+ 1fr);
+            }
+            }
+            
+                       
+            . .projects-gridprojects-grid {
+                grid-template-columns: repeat(2, 1fr);
+ {
+                grid-template-columns: repeat(2, 1fr);
+                       }
+            
+ }
+            
+            .blog            .blog-grid {
+-grid {
+                grid-template                grid-template-columns:-columns: repeat(2, repeat(2, 1fr);
+            }
+            
+            .contact-grid {
+                grid-template-columns: repeat(2 1fr);
+            }
+            
+            .contact-grid {
+                grid-template-columns: repeat(2, 1fr, 1fr);
+            }
+);
+            }
+        }
+
+        @media        }
+
+        @media (min-width (min-width: 1024px: 1024px) {
+            /*) {
+            /* Desktop styles */
+            . Desktop styles */
+            .cybercyber-name {
+                font-name {
+                font-size-size: 4.5rem;
+            }
+            
+            .hero: 4.5rem;
+            }
+            
+            .hero .sub .subtitle {
+                fonttitle {
+                font-size-size::  11.8rem;
+            }
+.8rem;
+            }
+            
+            .hero .description            
+            .hero .description {
+ {
+                font-size: 1.1rem;
+            }
+            
+            .cert-grid {
+                grid-template-columns: repeat(4                font-size: 1.1rem;
+            }
+            
+            .cert-grid {
+                grid-template-columns: repeat(4, 1fr);
+, 1fr);
+                       }
+            
+            . }
+            
+            .projects-grid {
+                grid-templateprojects-grid {
+                grid-template-columns: repeat-columns: repeat(3, (3, 1fr1fr);
+            }
+);
+            }
+            
+                       
+            .blog-grid .blog-grid {
+                {
+                grid-template-columns grid-template-columns:: repeat(3 repeat(3, , 1fr);
+1fr);
+            }
+            
+            }
+            
+            .            .contact-gridcontact-grid {
+                {
+                grid-template-column grid-template-columns: repeats: repeat(4(4, 1fr, 1fr);
+           );
+            }
+ }
+            
+            .            
+            .menu-toggle {
+               menu-toggle {
+                display: display: none;
+ none;
+            }
+            
+                       }
+            
+            nav ul nav ul {
+                {
+                display: flex display: flex;
+           ;
+            }
+        }
+
+ }
+        }
+
+        @        @media (media (max-widthmax-width: : 767px)767px) {
+            /* Mobile-specific styles */
+            .menu-toggle {
+                display: flex;
+            {
+            /* Mobile-specific styles */
+            .menu-toggle {
+                display: flex;
+ }
+            
+            nav ul            }
+            
+            nav ul {
+                display: none;
+ {
+                display: none;
+            }
+            }
+            
+                       
+            h2 {
+ h2 {
+                font                font-size: -size: 1.81.8rem;
+           rem;
+            }
+        }
+ }
+        }
+    </style>
+</    </style>
+</head>
+<bodyhead>
+<body>
+    <div>
+    <div class="bg-an class="bg-animation">
+        <imation">
+        <canvas id="canvas id="bgCanvas"></canvasbgCanvas"></canvas>
+    </div>
+
+    <nav>
+        <div class="container">
+            <div>
+    </div>
+
+    <nav>
+        <div class="container">
+            <div class class="logo">V="logo">Vanceance Frommer Frommer</</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#certifications                <li><a href="#cert">Certifications</a></li>
+ifications">Certifications</a></li>
+                <li                <li><a href="#projects">Projects><a href="#projects">Projects</a></li>
+</a></li                <li><a>
+                <li><a href="#blog">Blog href="#blog"></a></li>
+Blog</a></li>
+                <li><a                <li>< href="#contact">Contacta href="#contact">Contact</a></li>
+           </a></li>
+ </ul>
+                       </ul>
+            <div class="menu-toggle <div class="menu" id="mobile-toggle" id="mobile-menu">
+                <span-menu">
+                <></span>
+               span></span>
+                <span></span>
+ <span></span>
+                <span></span                <span></span>
+            </div>
+       >
+            </div>
+        </div>
+    </div>
+    </nav>
+
+    <!-- </nav>
+
+    <!-- Mobile Mobile Menu -->
+    Menu -->
+    <div class="mobile-menu <div class="mobile-menu" id="mobile" id="mobile-nav-nav">
+        <button">
+        <button class class="close-menu" id="close-menu" id="="close-menu">×close-menu">×</</button>
+        <ul>
+            <li><a href="#aboutbutton>
+        <ul>
+            <li><a href="#about" class="mobile" class="mobile-nav-link">About-nav-link">About</a</a></li></li>
+           >
+            <li><a <li><a href="#cert href="#certifications" classifications" class="mobile-nav-link">Certifications="mobile-nav-link">Certifications</a</a></li>
+            <li><a href="#projects" class="></li>
+            <li><a href="#projects" class="mobile-navmobile-nav-link">Projects</a-link">Projects</a></></li>
+            <li><a href="#li>
+            <li><a href="#blog" class="blog" class="mobile-nav-link">Blog</mobile-nav-link">Blog</a></li>
+a></li>
+                       < <lili><><a hrefa href="#contact" class="#contact" class="mobile-nav="mobile-nav-link">Contact</-link">Contact</a></lia></li>
+        </ul>
+>
+        </ul>
+    </div    </div>
+
+    <section class>
+
+    <section class="hero">
+       ="hero">
+        <div class="hero-content">
+ <div class="hero-content">
+                       <div class <div class="cy="cyber-nameber-name">">VANCEVANCE FROMMER FROMMER</div>
+            <div class="sub</div>
+            <div classtitle">Automation & AI Developer="subtitle">Automation &</div>
+            <p class=" AI Developer</div>
+            <p class="description">
+                Passionatedescription">
+                Passionate developer specializing in building intelligent automation systems and AI tools developer specializing in building intelligent automation systems and AI tools. Former Marine with a mission. Former Marine with a mission to master to master full-stack automation engineering and AI integration full-stack automation engineering and AI integration through hands-on projects.
+ through hands-on projects.
+            </p>
+            </p>
+            <div class="tech-log            <div class="tech-logos">
+               os">
+                <img src="https:// <img src="https://cdn.jsdelivrcdn.jsdelivr.net/gh.net/gh/dev/devicons/devicon/icons/python/pythonicons/devicon/icons/python/python-original.svg" class-original.svg" class="tech-l="tech-logo" alt="Python">
+               ogo" alt="Python">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"-original.svg" class=" class="tech-logo"tech-logo" alt="JavaScript">
+ alt="JavaScript">
+                               <img src="https <img src="https://img://img.icons8.icons8.com.com/?size=100/?size=100&id=Aq&id=AqYCfYCfGyGXGyGXlO7lO7&format=p&format=png&ng&color=FFFFFF" class="techcolor=FFFFFF" class="tech-logo" alt="Flask">
+                <img src-logo" alt="Flask">
+                <img src="https="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" class="tech-logo"://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" class="tech-logo" alt="Docker alt="Docker">
+                <img src="">
+                <img src="https://imghttps://img.icons8.com/?size=100&id=.icons8.com/?size=100&al1Vlid=al1VlNCK9NCK9eK5&format=png&color=FFFFFF" class="tech-logoeK5&format=png&color=FFFFFF" class="tech-logo" alt="AWS" alt="AWS">
+">
+                <img src="                <img src="https://uxwinghttps://uxwing.com.com/wp-content/themes//wp-content/themes/uxwing/download/buxwing/download/brands-and-social-media/githubrands-and-social-media/github-white-icon.png" class="-white-icon.png" class="tech-logo"tech-logo" alt="Git">
+            </ alt="Git">
+            </div>
+           div>
+            <div class="cta <div class="cta-buttons-buttons">
+                <">
+                <a href="#projects"a href="#projects" class=" class="btn btnbtn btn-primary">-primary">View Projects</aView Projects</a>
+               >
+                <a href <a href="#contact" class="btn btn="#contact" class="-secondary">Get in Touchbtn btn-secondary">Get in Touch</a>
+</a>
+            </            </div>
+div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About Me</h2        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About Me</h2>
+       >
+        <div class="about-content">
+            <div class=" <div class="about-content">
+            <div class="about-text">
+                <h3>Fromabout-text">
+                <h3>From Marine to Machine Learning Marine to Machine Learning</h3>
+               </h3>
+                <p>Former United States Marine <p>Former United States Marine transitioning into the world transitioning into the world of of AI development. AI development. My journey into My journey into technology technology started long started long before my before my professional career - from building my professional career - from building my own PCs own PCs as a teenager to creating home as a teenager to creating home labs labs, setting up servers, and, setting up servers, and exploring automation exploring automation.</p>
+                
+                <.</p>
+                
+                <p>p>With one year of dedicated developmentWith one year of dedicated development experience, I experience, I'm rapidly expanding my skills through'm rapidly expanding my skills through hands-on projects and hands-on projects and professional certifications. My Marine Corps background inst professional certifications. My Marine Corps background instilled inilled in me the me the discipline, discipline, problem-solving skills problem-solving skills,, and determination needed to and determination needed to excel in excel in the fast-paced the fast-paced world world of technology of technology.</p>
+                
+                <.</p>
+                
+                <div classdiv class="="about-highlights">
+                    <divabout-highlights">
+                    <div class=" class="highlight-item">
+                       highlight-item">
+                        <div class="highlight-icon"> <div class="highlight-icon">🚀</div>
+                        <div class="🚀</div>
+                        <div class="highlight-text">
+                           highlight-text">
+                            <div class="highlight-value">1+</div>
+                            <div class="highlight-label <div class="highlight-value">1+</div>
+                            <div class="highlight-label">">Year Experience</div>
+Year Experience</div>
+                                               </div>
+ </div>
+                    </                    </div>
+                   div>
+                    <div class="highlight-item">
+ <div class="highlight-item">
+                                               <div class <div class="highlight-icon">💼</div="highlight-icon">💼>
+                        <div class="</div>
+                        <divhighlight-text">
+                            class="highlight-text">
+                            <div class="highlight-value <div class="highlight-value">4</div">4</div>
+                           >
+                            <div class=" <div class="highlight-label">Certificationshighlight-label">Certifications in in Progress</div>
+ Progress</div>
+                        </div>
+                    </                        </div>
+                    </div>
+                   div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">⚙️</div>
+                        <div class="highlight-text">
+                            <div class="highlight-item">
+                        <div class="highlight-icon">⚙️</div>
+                        <div class="highlight <div class="highlight-value">-text">
+                            <div class="highlight-value">15+15+</div>
+</div>
+                                                       < <divdiv class class="highlight-label">="highlight-label">Projects Built</divProjects Built</div>
+                        </div>
+                        </div>
+                    </div>
+>
+                    </div>
+                    <div class="highlight-item">
+                        <                    <div class="highlight-item">
+div class="highlight-icon">🎯</div                        <div class="highlight-icon">>
+                        <div class="highlight-text">
+                            <div🎯</div>
+                        <div class="highlight-text">
+                            <div class="highlight-value">100%</div>
+                            <div class="highlight class="highlight-value">100%</div>
+                            <div class="highlight-label-label">Self-Ta">Self-Taught</div>
+                        </ught</div>
+                       div>
+                    </div>
+                    </div>
+                </div </div>
+                </div>
+
+>
+
+                <div class                <div class="skills-container">
+                    <="skills-container">
+                    <div class="skill-category">
+                        <hdiv class="skill-category">
+                        <h44>Current Certifications>Current Certifications in in Progress</h4>
+ Progress</h4>
+                        <                        <divdiv class="skill-tags">
+                            class="skill-tags">
+                            <span class=" <span class="skill-tag">
+                               skill-tag">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"-original.svg" alt="Python">
+                                Python alt="Python">
+                                Python PCEP/PC PCEP/PCAP
+                            </span>
+AP
+                            </span>
+                            <span class="skill-tag">
+                                <                            <span class="skill-tag">
+                                <img src="img src="https://img.icons8.com/?size=100&id=al1Vhttps://img.icons8.com/?size=100&id=al1VlNCKlNCK9e9eK5K5&format=p&format=png&colorng&color==FFFFFF" altFFFFFF" alt="AWS="AWS">
+                                AWS Certified">
+                                AWS Certified Developer
+                            </span>
+                            <span class="skill Developer
+                            </span>
+                            <span class="skill-tag">
+-tag">
+                                <img                                <img src=" src="https://cdn.jsdelivr.nethttps://cdn.js/gh/devicons/devdelivr.net/gh/devicons/deviconicon/icons/icons/d/dockerocker/d/docker-original.svg" alt="Docker">
+                                Docker Certified Associate
+                            </span>
+                            <span class="skill-tocker-original.svg" alt="Docker">
+                                Docker Certified Associate
+                            </span>
+                            <span class="skill-tag">
+ag">
+                                <img                                <img src="https://cdn.jsdel src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svgflow/tensorflow-original" alt="AI">
+                                AI.svg" alt="AI">
+                                Developer Certificate
+                            </span>
+                        </ AI Developer Certificate
+                            </span>
+                       div>
+                    </div>
+                    
+                    <div class </div>
+                    </div>
+                    
+                    <div="skill-category class="skill-category">
+                        <h4>Technical Stack</h4>
+                        <div class="skill">
+                        <h4>Technical Stack</h4>
+                        <div class="skill-t-tags">
+                            <span class="ags">
+                            <span class="skill-tag">
+skill-tag">
+                                                               <img src="https <img src="https://cdn.jsdelivr://cdn.jsdelivr.net/gh/dev.net/gh/devicons/devicon/iconsicons/devicon/icons/python/python/python/python-original.svg"-original.svg" alt="Python">
+ alt="Python">
+                                                               Python
+                            </span Python
+                            </span>
+>
+                            <span class="skill-tag">
+                                <img src="https://cdn.jsdelivr.net/                            <span class="skill-tag">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/iconsgh/devicons/devicon/icons/javascript/javascript-original.svg/javascript/javascript-original.svg"" alt="JavaScript">
+ alt="JavaScript">
+                                                               JavaScript
+                            </ JavaScript
+                            </spanspan>
+                            <span class="skill-tag">
+                                <img src=">
+                            <span class="skill-tag">
+                                <img src="httpshttps://img.icons://img.icons8.com/?size=100&id=Aq8.com/?size=100&id=AqYCfGyGXlYCfGyGXlO7&formatO7&format=p=png&color=FFFFFFng&color=FFFFFF"" alt="Fl alt="Flask">
+                                Flask
+                           ask">
+                                Flask
+                            </span </span>
+>
+                                                       <span class="skill-tag <span class="skill-tag">
+">
+                                <img src="https://cdn                                <img src="https://cdn.jsdel.jsdelivr.net/ivr.net/gh/devgh/devicons/devicons/deviconicon/icons/icons/fast/fastapi/fastapi-original.svg"api/fastapi-original.svg" alt="Fast alt="FastAPI">
+                                FastAPIAPI">
+                                FastAPI
+                            </
+                            </span>
+                            <span class="span>
+                            <span class="skill-tag">
+                                <img src="https://cdn.jsdelivr.net/gh/devskill-tag">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicons/devicon/icons/postgresicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQLql/postgresql-original.svg" alt="PostgreSQL">
+                                PostgreSQL
+                            </span>
+                            <span class="skill-tag">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/d">
+                                PostgreSQL
+                            </span>
+                           ocker/docker-original.svg" alt="Docker">
+                                Docker
+                            </span>
+                            <span class="skill-tag">
+                                <img src="https:// <span class="skill-tag">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker">
+                                Docker
+                            </span>
+                            <span class="skill-tag">
+                                <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/github-white-icon.png" alt="Git">
+                               uxwing.com/wp-content/themes/uxwing Git
+                            <//download/brands-and-social-media/github-white-icon.png" alt="Git">
+                                Git
+                            </span>
+                        </span>
+                        </div>
+div>
+                    </                    </div>
+               div>
+                </div>
+ </div>
+                       </ </div>
+            
+            <div class="about-visdiv>
+            
+            <div class="about-visual">
+ual">
+                <div class="profile-card">
+                    <div class="profile                <div class="profile-card">
+                    <div class="profile-image">
+-image">
+                                               <div class="marine <div class="marine-flag-flag"></div"></div>
+>
+                                       </ </div>
+                    <hdiv>
+                    <h3>V3>Vance Frommer</h3>
+                   ance Frommer</h3>
+                    <div class=" <div class="profile-title">Automprofile-title">Automationation & AI Developer</ & AI Developer</div>
+div>
+                    
+                    <                    
+                    <div class="div class="profile-stprofile-stats">
+                        <div class="profile-stat">
+                            <div class="stat-number">ats">
+                        <div class="profile-stat">
+                            <div class="stat-number">1yr</div1yr</div>
+                           >
+                            <div <div class=" class="stat-label">stat-label">Dev Experience</Dev Experience</div>
+div>
+                        </                        </div>
+div>
+                        <div                        <div class="profile class="profile-stat">
+-stat">
+                                                       <div class <div class="stat-number">="stat-number">4</4</div>
+div>
+                            <div class                            <div class="stat="stat-label">-label">Active CActive Certs</div>
+erts</div>
+                        </                        </div>
+div>
+                    </div>
+                    </div>
+                    
+                                       
+                    <p <p>Bring>Bringing Marine Corpsing Marine Corps discipline to AI discipline to AI development. development. Building the Building the future one algorithm future one algorithm at a time at a time.</p.</p>
+                    
+                   >
+                    
+                    <div <div class=" class="profile-interprofile-interests">
+                       ests">
+                        <h4>Tech Interests</h <h4>Tech Interests</h4>
+                        <4>
+                        <div class="interest-tags">
+                            <spandiv class="interest-tags">
+                            <span class="interest-tag">Home Labs</span>
+                            class="interest-tag">Home Labs</span <span class=">
+                            <span class="interest-tag">interest-tag">AutomationAutomation</span>
+                            <span class="interest-tag">Server Management</span>
+                            <span class="</span>
+                            <span class="interest-tag">Server Management</span>
+                           interest-tag"> <span class="interest-tag">AI Ethics</spanAI Ethics</span>
+                        </div>
+                    </>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <sectiondiv>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    id="certifications" class="certifications">
+        <h2>Certifications & Progress</h2>
+        <div class="cert-grid">
+ <section id="certifications" class="certifications">
+        <h2>Certifications & Progress</h2>
+        <div class="cert-grid            <div class="">
+            <div class="cert-card">
+                <imgcert-card">
+                <img src="https:// src="https://cdn.jsdelivr.netcdn.jsdelivr.net/gh/devicons/gh/devicons/devicon/icons/python/devicon/icons/python/python-original.svg" class="/python-original.svg" class="certcert-logo"-logo" alt alt="Python">
+               ="Python">
+                <h4>Python <h4>Python P PCEP/PCAP</CEP/PCAP</hh4>
+4>
+                <p>Python Institute                <p>Python Institute Certification Certification</p>
+               </p>
+                <span class="status-b <span class="status-badge">In Progress</adge">In Progress</span>
+            </span>
+            </div>
+            <div classdiv>
+            <div class="cert-card">
+="cert-card">
+                <img src="https                <img src="https://img.icons://img.icons88.com/?size=100.com/?size=100&id=al1&id=al1VVlNClNCKK9eK5&9eK5&formatformat=png&color==png&color=FFFFFF" class="FFFFFF" class="certcert-logo" alt="-logo" alt="AWSAWS">
+               ">
+                <h4 <h4>AWS Developer</h4>
+                <>AWS Developer</h4p>AWS Certified Developer>
+                <p>AWS</p>
+                < Certified Developer</p>
+               span class="status-b <span class="statusadge">Planned-badge">Planned</span>
+            </div</span>
+           >
+            <div </div>
+            <div class="cert-card">
+                class="cert-card">
+                <img src="https <img src="https://cdn.jsdeliv://cdn.jsdelivr.net/ghr.net/gh/devicons/devicon/icons/d/devicons/devicon/icons/docker/docker/docker-original.svgocker-original.svg" class="cert" class="cert-logo-logo" alt" alt="="DDocker">
+                <h4>ocker">
+                <h4>Docker AssociateDocker Associate</h4>
+                <p></h4>
+                <p>Docker CertifiedDocker Certified Associate</p>
+                <span class Associate</p>
+                <span class="status-b="status-badge">Planned</span>
+           adge">Planned</span>
+            </div>
+ </div>
+            <div class="cert-card            <div class="cert-card">
+                <img">
+                <img src="https://cdn.js src="https://cdn.jsdelivr.netdelivr.net/gh/gh/devicons/dev/devicons/deviconicon/icons/tensorflow/icons/tensorflow/tensor/tensorflow-original.svgflow-original.svg" class" class="cert="cert-logo-logo" alt="" alt="AI">
+               AI">
+                <h <h4>AI4>AI Developer</h Developer</h4>
+4>
+                               <p>AI Developer <p>AI Developer Certificate</ Certificate</p>
+p>
+                <span class                <span class="status="status-badge-badge">Pl">Planned</anned</span>
+span>
+            </div>
+            </div>
+        </        </div>
+    </div>
+    </section>
+
+section>
+
+       <section id="projects <section id="projects">
+        <h2>Featured Projects">
+        <h</h2>
+2>Featured Projects</h        <div class2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-icon">🤖</="project-icon">🤖</div>
+                <hdiv>
+                <h3>3>Automation & AIAutomation & AI Developer Roadmap</ Developer Roadmap</h3h3>
+                <p>A structured 15>
+                <p>A structured-month journey to becoming 15-month journey a Full-Stack Automation Engineer to becoming a Full- + AI IntegratorStack Automation Engineer + AI. Documenting progress through Python Integrator. Documenting progress through Python foundations, Flask foundations, Flask development, AI systems, and cloud development, AI systems, and cloud deployment.</p deployment.</p>
+               >
+                <div class <div class="tech-stack="tech-stack">
+">
+                    <span class                    <span class="="tech-tag">
+tech-tag">
+                                               <img src="https <img src="https://cdn.jsdel://cdn.jsdelivivrr.net.net//gh/devicons/devicongh/devicons/devicon/icons/python/icons/python/python-original.svg" alt="Python/python-original.svg" alt="Python">
+                        Python">
+                        Python
+                   
+                    </ </span>
+                    <spanspan>
+                    <span class="tech-tag class="tech-tag">
+                        <">
+                        <img src="https://img.iconsimg src="https://img.icons8.com/?size8.com/?size=100&id=Aq=100&id=AqYCfYCfGyGXlGyGXlOO7&format7&format=png=png&color=&color=FFFFFF" altFFFFFF" alt="Fl="Flask">
+                        Flask
+                    </span>
+                    <spanask">
+                        Flask
+                    </span>
+                    <span class="tech class="tech-tag">
+                        <img src="https://img.icons8.com/?size=100&id=al1VlNCK9eK5&format=png&color=FFFFFF" alt="AWS">
+                        AWS
+-tag">
+                        <img src="https://                    </span>
+                    <span class="tech-tag">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker">
+                        Docker
+                    </span>
+                </div>
+                <div class="projectimg.icons8.com/?size=100&id=al1VlNCK9eK5&format=png&color=FFFFFF" alt="AWS">
+                        AWS
+                    </span>
+                    <span class="tech-tag">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker">
+                        Docker
+                    </span>
+                </div>
+                <div class="project-links">
+                    <a-links">
+                    href="https:// <a href="https://github.com/Vantgithub.com/Vantix-ix-1/1/automationautomation-ai-developer-ai-developer" target" target="_blank" class="_blank" class="project-link">
+                       ="project-link">
+                        <span>View on <span>View on GitHub</span> →
+                    </a>
+                GitHub</span> →
+                    </a>
+                </div>
+            </div </div>
+            </div>
+
+           >
+
+            <div class <div class="project-card="project-card">
+                <div class="project">
+                <div class="project-icon-icon">🐍</div>
+                <h">🐍</div>
+                <h33>Python Crash Course>Python Crash Course Work</h3>
+                Work</h3>
+                <p>Com <p>Comprehensive Python learning journey following "prehensive Python learning journey following "Python Crash Course,Python Crash Course,  3rd Edition". Completed3rd Edition". Completed chapters 1- chapters 1-9 covering9 covering variables, data structures variables, data structures, functions, classes, functions, classes, and, and OOP principles OOP principles.</.</p>
+               p>
+                <div class <div class="tech-stack="tech-stack">
+                    <span">
+                    <span class=" class="tech-tagtech-tag">
+">
+                        <img src                        <img src="https="https://cdn.js://cdn.jsdeldelivr.net/ivr.net/gh/devgh/devicons/devicon/iconsicons/devicon/icons/python/python/python-original/python-original.svg".svg" alt="Python">
+ alt="Python">
+                        Python                        Python
+                   
+                    </span>
+                    </span>
+                    <span <span class=" class="tech-ttech-tag">
+                        <ag">
+                        <img src="https://uximg src="https://uxwing.comwing.com/wp-content/wp-content/themes/themes/uxwing/download/uxwing/download/brands/brands-and-social-media/github-white-icon-and-social-media/github-white-icon.png".png" alt="Git alt="Git">
+                        Git
+                    </span>
+               ">
+                        Git
+                    </span>
+                </div>
+                <div class="project-links </div>
+                <div class="project-links">
+">
+                    <a href="https://                    <a href="https://github.com/Vantixgithub.com/Vantix--1/python_work1/python_work" target="_blank" target="_blank" class="project-link">
+                        <span>View on" class="project-link">
+                        <span>View on GitHub</span GitHub</span> →
+                    </a>
+> →
+                    </a>
+                </div                </div>
+           >
+            </div>
+
+            <div class=" </div>
+
+            <div class="project-card">
+project-card">
+                               <div class=" <div class="project-iconproject-icon">📋">📋</div</div>
+>
+                               < <h3>Enhanced To-Dh3>Enhanced To-Do CLI App</h3>
+                <p>Advanced command-line to-do application with priorities, deadlines, and persistent storage. Featureso CLI App</h3>
+                <p>Advanced command-line to-do application with priorities, task categorization, due date deadlines, and persistent storage. Features task categorization, due date tracking tracking, and JSON, and JSON-based data-based data persistence.</p>
+ persistence.</p>
+                               <div class=" <div class="techtech-stack">
+                    <span class="tech-tag">
+                        <img src="https://-stack">
+                    <span class="tech-tag">
+                        <img src="https://cdn.jsdelcdn.jsdelivr.net/gh/devicons/devivr.net/icon/icons/python/pythongh/devicons/devicon/icons-original.svg" alt="/python/python-original.svg"Python">
+                        Python alt="Python">
+
+                    </span>
+                                           Python
+                    </span <span class="tech-t>
+                    <span class="ag">
+                       tech-tag">
+ <img src="https                        <img src://cdn.jsdelivr="https://cdn.jsdel.net/gh/devivr.net/gh/devicons/devicon/icons/json/jsonicons/devicon/icons-original.svg" alt="/json/json-original.svg"JSON">
+                        JSON alt="JSON">
+                        JSON
+                    </span
+                    </span>
+               >
+                </div>
+                </div>
+                <div class=" <div class="project-links">
+                   project-links">
+                    <a href="https://github <a href="https.com/Vantix://github.com/Vantix-1/automation--1/automation-ai-developai-developer/ter/tree/main/week2ree/main/week2" target" target="_blank="_blank" class" class="project-link">
+="project-link">
+                        <                        <span>View on GitHub</span>span>View on GitHub</span> →
+                    </a>
+                →
+                    </a>
+                </div>
+            </div </div>
+            </div>
+
+            <div class="project-card">
+               >
+
+            <div class="project-card">
+                <div class="project-icon">🔐</ <div class="project-icon">🔐div>
+                <h3</div>
+                <h3>Password Generator &>Password Generator & Security Tools Security Tools</h</h33>
+>
+                <p>Secure random password generator with customizable length and character sets. Includes additional security utilities for file                <p>Secure random password generator with customizable length and character sets. Includes additional security utilities for file cleanup and data protection automation cleanup and data protection automation.</p>
+                <div class="tech.</p>
+                <div class="tech-stack">
+-stack">
+                                       <span class <span class="tech-t="tech-tag">
+                       ag">
+                        <img <img src=" src="https://cdn.jsdelivr.nethttps://cdn.jsdelivr.net/gh/devicons/devicon/gh/devicons/icons/python/python-or/devicon/icons/python/python-original.svg" alt="Pythoniginal.svg" alt="">
+                        Python
+Python">
+                        Python
+                                       </span>
+                </ </span>
+                </div>
+               div>
+                <div class="project-links <div class="project-l">
+                    <ainks">
+                    <a href="https://github.com href="https://github.com/Vantix-/Vantix-1/1/automation-aiautomation-ai-develop-developer/treeer/tree/main/week/main/week1" target="_1" target="_blank" class="blank" class="project-linkproject-link">
+                        <span">
+                        <span>View on GitHub</span>View on GitHub> →
+                    </a>
+</span> →
+                    </                </div>
+a>
+                </div>
+            </div>
+
+            </div>
+
+                       <div class <div class="project="project-card">
+               -card">
+                <div class <div class="project-icon="project-icon">📊</div">📊</div>
+                <h>
+                <h3>3>Habit TrackerHabit Tracker & Productivity & Productivity Suite</h3 Suite</h3>
+               >
+                <p <p>Com>Comprehensive habitprehensive habit tracking system with JSON tracking system with JSON storage, storage, progress visualization, progress visualization, and daily planning and daily planning capabilities. Includes productivity capabilities. Includes productivity tip bot and tip bot and weekly report generation.</p>
+ weekly report generation.</p>
+                <div class="                <div class="tech-stack">
+                    <span class="tech-tag">
+                        <imgtech-stack">
+                    <span class="tech-tag">
+                        <img src src="https://cdn.js="https://cdn.jsdelivr.netdelivr.net//gh/devicons/devgh/devicons/deviconicon/icons/python/python-or/icons/python/python-original.svgiginal.svg"" alt alt="Python">
+                       ="Python">
+                        Python
+                    </span Python
+                    </span>
+                    <span class=">
+                    <span class="tech-tagtech-tag">
+                        <img">
+                        <img src="https://cdn.js src="https://cdn.jsdelivr.net/ghdelivr.net/gh/devicons/devicon/icons/devicons/devicon/icons/json/json-original.svg/json/json-original.svg" alt="JSON">
+" alt="JSON                        JSON
+                    </">
+                        JSON
+                    </span>
+                </divspan>
+                </div>
+                <div class>
+                <div class="project-links">
+                   ="project-links">
+                    <a <a href="https://github.com/V href="https://github.comantix-1//Vantix-1/automation-aiautomation-ai-developer/tree/main-developer/tree/main/week2/week2" target="_blank" class="" target="_blank" class="project-linkproject-link">
+                        <span>View on">
+                        <span>View on GitHub</span GitHub</span> →
+                    </a> →
+                    </a>
+                </div>
+            </>
+                </div>
+            </div>
+
+            <div classdiv>
+
+           ="project <div class-card">
+                <div class="project="project-card">
+                <div class="project-icon">-icon">🌐</🌐</div>
+               div>
+                <h <h3>Flask3>Flask Dashboard & API Development</h3>
+                <p Dashboard & API Development</h>Upcoming web dashboard3>
+                <p>Upcoming web projects turning Python automation scripts dashboard projects turning Python automation into interactive web scripts into interactive web interfaces. Planning REST APIs, interfaces. Planning REST APIs, login systems, and AI integration login systems, and AI integration features.</p>
+ features.</p>
+                <div class="tech                <div class="tech-stack">
+                   -stack">
+                    <span class="tech-t <span class="tech-tag">
+                        <img src="https://cdn.jsdelag">
+                        <img src="https://cdn.jsdelivr.net/ivr.net/gh/devgh/devicons/devicons/devicon/icons/pythonicon/icons/python/python-original/python-original.svg" alt="Python">
+.svg" alt="Python">
+                        Python
+                    </span                        Python
+                    </span>
+                   >
+                    < <spanspan class class="="tech-tag">
+                       tech-tag">
+                        <img src <img src="https://img.icons8.com/?size="https://img.icons8.com/?size=100&id=AqYCf=100&id=AqGyGXlYCfGyGXlO7&format=pO7&formatng&color=FFFFFF=png&color=FFFFFF" alt" alt="Flask">
+="Flask">
+                        Flask
+                                           Flask
+                    </span </span>
+                    <span>
+                    <span class class="tech-tag">
+                        <img="tech-tag">
+                        <img src src="https://="https://cdn.jsdelivr.netcdn.jsdelivr.net/gh/dev/gh/devicons/devicons/devicon/iconsicon/icons/docker/docker/docker-original/docker-original.svg".svg" alt=" alt="DockerDocker">
+                       ">
+                        Docker
+ Docker
+                                       </span>
+                </div>
+                <div </span>
+                </div>
+                class="project-links <div class="project-links">
+                    <a href">
+                    <a href="="https://github.com/Vantix-https://github.com/Vantix-1/automation1/automation-ai-ai-developer-developer/tree/tree/main/week3"/main/week3" target target="_blank"="_blank" class=" class="project-link">
+                       project-link">
+                        < <span>Viewspan>View Roadmap Roadmap</span> →
+                    </a>
+                </</span> →
+                    </a>
+div>
+            </                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <section idsection>
+
+    <section id="blog">
+        <h="blog">
+        <2>Latest inh2>Latest in AI</h2>
+        AI</h2>
+        <div id="blogContainer" class=" <div id="blogContainer" class="blog-grid">
+            <div class="loading">Loadingblog-grid">
+            <div class="loading">Loading latest AI news...</ latest AI news...</div>
+div>
+        </div>
+        </div>
+    </    </section>
+
+section>
+
+    <section id="contact">
+           <section id="contact">
+        <h <h2>Get2>Get In Touch</ In Touch</hh2>
+       2>
+        <div class=" <div class="contact-grid">
+            <div classcontact-grid">
+            <div class="contact-card">
+                <div="contact-card">
+                <div class=" class="contact-icon">contact-icon">📧</📧</div>
+               div>
+                <h3>Email <h3>Email</h3>
+                <a href</h3>
+                <a href="mailto="mailto:v:vance@futurenameance@futurename">vance@futurename">vance@futurename</a>
+           </a>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon"> </div>
+            <div class="contact-card">
+                <div class="contact-icon">💼</div>
+               💼</div>
+ <h3>Linked                <h3>LinkedIn</h3In</h3>
+                <a href=">
+                <a href="https://linkedin.com/inhttps://linkedin.com/in/vancefrommer/vancefrommer" target="_blank">" target="_blank">//in/vancefromin/vancefrommer</a>
+            </mer</a>
+            </div>
+           div>
+            <div class="contact-card">
+ <div class="contact-card">
+                <div class                <div class="contact-icon">🐙</div>
+               ="contact-icon">🐙</div>
+                <h3>GitHub <h3></h3>
+               GitHub</h3>
+                <a href="https://github.com/vantix <a href="https://github-1" target.com/vantix-1="_blank">@v" target="_blank">@vantix-antix-1</1</a>
+            </a>
+            </div>
+div>
+                       <div class="contact-card">
+                <div class="contact-card">
+ <div class="contact-icon                <div class="contact-icon">📍</">📍</div>
+div>
+                               <h3> <h3>Location</hLocation</h3>
+                <p3>
+                <>El Mirage,p>El Mirage, AZ</p>
+            </ AZ</p>
+            </div>
+div>
+        </div>
+    </section>
+
+        </div>
+    </section>
+
+       < <footerfooter>
+>
+               <p>&copy; 2025 <p>&copy; 2025 Vance From Vance Frommer. Built with passion for AI innovation.</pmer. Built with passion for AI innovation.</p>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+>
+    </footer>
+
+    <script>
+        // Mobile menu        const mobileMenuToggle = document.getElementById('mobile functionality
+        const mobileMenuToggle = document.getElementById('mobile-menu');
+        const-menu');
+        const mobile mobileNav = document.getElementById('Nav = document.getElementById('mobile-nav');
+mobile-nav');
+        const closeMenu = document.getElementById        const closeMenu = document('close-menu');
+.getElementById('close-menu');
+        const        const mobileNavLinks = document.querySelectorAll('. mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+       mobile-nav-link');
+
+        mobile mobileMenuToggle.addEventListener('MenuToggle.addEventListener('click', ()click', () => {
+            mobileNav.classList => {
+            mobileNav.classList.add('.add('active');
+       active');
+        });
+
+        });
+
+        closeMenu.addEventListener(' closeMenu.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+        });
+
+       click', () => {
+            mobileNav.classList.remove('active');
+        });
+
+        mobileNav mobileNavLinks.forEach(Links.forEach(linklink => {
+            link => {
+            link.addEventListener('click', () =>.addEventListener('click', () {
+                mobileNav.classList.remove => {
+                mobileNav('active');
+            });
+       .classList.remove('active');
+            });
+        });
+
+        });
+
+        // An // Animated background
+       imated background
+        const canvas const canvas = document = document.getElementById('bgCanvas.getElementById('bgCanvas');
+        const ctx = canvas');
+        const ctx = canvas.getContext('2d');
+.getContext('2d');
+        canvas.width =        canvas.width = window.innerWidth;
+ window.innerWidth;
+        canvas.height = window.inner        canvas.height = window.innerHeight;
+
+        const particles =Height;
+
+        const particles = [];
+        [];
+        const particle const particleCount = 80; // Reduced for mobile performanceCount = 80; // Reduced for mobile
+
+        class Particle {
+ performance
+
+        class Particle {
+            constructor() {
+                           constructor() {
+                this.x = Math.random() * this.x = Math.random() * canvas.width canvas.width;
+               ;
+                this.y this.y = Math.random = Math.random() * canvas.height() * canvas.height;
+;
+                this.vx                this.vx = (Math.random() - = (Math.random() - 0.5 0.5) *) * 0.5 0.5;
+;
+                               this this.vy =.vy = (Math (Math.random() - 0.5).random() - 0.5) * 0 * 0.5;
+                this.radius = Math.random().5;
+                this.radius * 2;
+ = Math.random() * 2;
+            }
+
+            update() {
+                           }
+
+            update() {
+                this.x += this.x += this.vx;
+                this.y += this.vy;
+
+                this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > if (this.x < 0 || this.x > canvas.width) this.vx *= canvas.width) this.vx *= -1;
+                if -1;
+                if (this.y (this.y < 0 || this.y > < 0 || this.y > canvas.height) this. canvas.height) this.vy *= -1;
+vy *= -1;
+            }
+
+            draw            }
+
+            draw() {
+                ctx.beginPath() {
+                ctx.beginPath();
+                ctx.arc(this();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * .x, this.y, this.radius, 0, Math.PI *2);
+                ctx.fillStyle = 2);
+                ctx.fillStyle = 'rgba 'rgba(0, 212, (0, 212,255, 0 255, 0.5)';
+                ctx.fill();
+            }
+.5)';
+                ctx.fill();
+            }
+        }
+
+        for (        }
+
+        for (let i = 0; ilet i = 0; i < particle < particleCount; iCount; i++) {
+           ++) {
+            particles.push particles.push(new Particle());
+       (new Particle());
+        }
+
+        }
+
+        function animate() function animate() {
+            ctx.clearRect( {
+            ctx.clearRect0, 0,(0, 0, canvas.width canvas.width, canvas, canvas.height);
+
+            particles.height);
+
+            particles.forEach(.forEach(particle => {
+particle => {
+                               particle.update();
+                particle.draw();
+            });
+
+ particle.update();
+                particle.draw();
+            });
+
+            //            // Connect nearby Connect nearby particles particles - reduced distance for mobile - reduced distance for mobile
+            for (let i
+            for (let i = 0; = 0; i < particles.length; i < particles.length; i i++) {
+++) {
+                for                for (let j = i (let j = i + 1; j < particles + 1; j < particles.length; j++).length; j++) {
+                    const dx {
+                    const dx = = particles[i]. particles[i].x - particles[j].x;
+                   x - particles[j].x;
+                    const dy const dy = particles = particles[i].y -[i].y - particles[j particles[j].y].y;
+                   ;
+                    const distance = Math const distance = Math.sqrt(dx * dx +.sqrt(dx * dx + dy * dy);
+
+ dy * dy);
+
+                    if                    if (distance (distance < 80 < 80) { //) { // Reduced connection distance
+                        ctx.begin Reduced connection distance
+                        ctx.beginPath();
+                        ctx.moveToPath();
+                        ctx.moveTo(particles[i].(particles[i].x, particles[ix, particles[i].y);
+                        ctx.line].y);
+                        ctx.lineTo(particles[j].To(particlesx,[j].x, particles[j].y);
+                        ctx particles[j].y);
+                        ctx.strokeStyle =.strokeStyle = ` `rgba(0,rgba(0, 212, 255 212, 255, ${1 -, ${1 - distance / 80})`;
+ distance / 80})`;
+                        ctx.lineWidth                        ctx.lineWidth = 0.5;
+ = 0.5;
+                        ctx.stroke                        ctx.stroke();
+                    }
+                }
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        window.addEventListener('resize', ()();
+                    }
+                }
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        window.addEventListener('resize', () => => {
+            canvas.width = window.innerWidth {
+            canvas.width = window.innerWidth;
+           ;
+            canvas.height = window canvas.height = window.innerHeight;
+        });
+
+       .innerHeight;
+        });
+
+        // Fetch AI news from live // Fetch AI news from live API API
+        async function fetchAINews()
+        async function fetchAINews() {
+            {
+            const container = document.getElementById(' const container = document.getElementById('blogContainerblogContainer');
+            const API_URL = 'https://');
+            const API_URL = 'https://api.rss2json.com/v1api.rss2json.com/v1/api.json?r/api.json?rss_url=https%ss_url=https%3A3A%2F%%2F%2F2Ftechcrunch.com%2Ftechcrunch.com%2category%2Fartificial-intelligence%2Fcategory%2Fartificial-intelligence%Ffeed%2F';
+
+            try {
+2Ffeed%2F';
+
+            try {
+                const response                const response = = await fetch( await fetch(API_URL);
+                if (!responseAPI_URL);
+                if (!.ok) {
+                   response.ok) {
+                    throw new Error(` throw new Error(`HTTP error! status: ${HTTP error! status: ${response.status}`);
+                }
+               response.status}`);
+                }
+                const data = await response.json const data = await response.json();
+
+                if (();
+
+                if (data.status === 'okdata.status === '') {
+                    const newsok') {
+                    const newsItems = data.itemsItems = data.items.slice.slice(0, 6(0, 6);
+                    container.innerHTML);
+                    container.innerHTML = newsItems.map(item => = newsItems.map(item => {
+                        const excerpt = {
+                        const excerpt = item item.description.replace(/.description.replace(/<[^>]*>/g<[^>]*>/, '').substringg, '').substring(0, 120(0, 120) + '...';
+                       ) + '...';
+ const pubDate =                        const pubDate = new Date(item.p new Date(item.pubDateubDate).toLocaleDateString('en-US',).toLocaleDateString('en-US', {
+                            year: ' {
+                            year: 'numeric',
+                            month: 'numeric',
+                            month: 'long',
+                            daylong',
+                            day:: 'numeric'
+                        });
+ 'numeric'
+                        });
+                        const imageUrl =                        const imageUrl = item item.thumbnail ? `.thumbnail ? `style="style="background-image: url(${item.background-image: url(${item.thumbnail})thumbnail})"` : '';
+                        const fallbackIcon = item.thumbnail ? '' : '📰';
+
+                        return `
+                            <a href="${item.link}" target"` : '';
+                        const fallbackIcon = item.thumbnail ? '' : '📰';
+
+                        return `
+                            <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="blog-card">
+                                <div="_blank" rel="noopener noreferrer" class="blog-card">
+                                <div class="blog-image" ${imageUrl}>${fallbackIcon}</div>
+                                <div class="blog-content">
+                                    <div class="blog-date">${pubDate}</div>
+                                    <h3>${item.title}</h3>
+                                    <p>${ class="blog-image" ${imageUrl}>${fallbackIcon}</excerpt}</p>
+                                    <span class="blog-source">Read ondiv>
+                                <div class="blog-content">
+                                    <div class="blog-date">${pubDate}</div>
+                                    <h3>${item.title}</h3>
+                                    <p>${excerpt}</p>
+                                    <span class="blog-source">Read on ${item.author ${item.author || || 'TechCrunch'}</span>
+                                </ 'TechCrunch'}</span>
+                                </div>
+                            </adiv>
+                            </>
+                        `;
+                   a>
+                        `;
+                    }).join(''); }).join('');
+                } else {
+                   
+                } else {
+                    throw new Error('API throw new Error('API status status was not "ok"');
+                }
+            was not "ok"');
+                }
+            } } catch (error) catch (error) {
+                {
+                console.error(' console.error('Error fetching AIError fetching AI news:', error);
+                container.innerHTML = news:', error);
+                container.innerHTML = '<div '<div class=" class="loading">Failed toloading">Failed to load AI news. load AI news. Please try again later.</div>';
+            Please try again later.</div }
+        }
+
+        document.addEventListener>';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded('DOMContentLoaded', fetch', fetchAINewsAINews);
+   );
+    </script>
+</ </script>
+</body>
+</html>
