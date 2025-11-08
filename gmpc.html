@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery - Green Monster Pool Care</title>
+    <title>Crystal Blue Pools | Premium Pool Services</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-blue: #1a3e6c;
-            --secondary-blue: #2c5a94;
-            --accent-green: #4caf50;
-            --dark-green: #2e7d32;
+            --primary-blue: #1a6fb0;
+            --secondary-blue: #2c8fd6;
+            --accent-teal: #00a8a8;
+            --dark-blue: #0d4a75;
             --light-blue: #e8f4f8;
             --text-dark: #333;
             --text-light: #fff;
@@ -30,12 +31,71 @@
             color: var(--text-dark);
             line-height: 1.6;
             background-color: #fff;
+            overflow-x: hidden;
         }
 
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Montserrat', sans-serif;
             font-weight: 600;
             margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-teal);
+            color: var(--text-light);
+            padding: 0.9rem 2.2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            border: 2px solid var(--accent-teal);
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--accent-teal);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--text-light);
+            color: var(--text-light);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--text-light);
+            color: var(--primary-blue);
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--dark-blue);
+            font-size: 2.2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-teal);
+            margin: 10px auto;
         }
 
         /* Header Styles */
@@ -50,23 +110,27 @@
         }
 
         .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 2rem;
         }
 
-        .logo-container {
+        .logo {
             display: flex;
             align-items: center;
             gap: 15px;
         }
 
-        .logo {
-            height: 60px;
-            width: auto;
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent-teal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
         }
 
         .logo-text {
@@ -84,7 +148,7 @@
 
         .logo-sub {
             font-size: 0.9rem;
-            color: var(--accent-green);
+            color: var(--light-blue);
             font-weight: 500;
         }
 
@@ -104,7 +168,7 @@
         }
 
         nav a:hover {
-            color: var(--accent-green);
+            color: var(--accent-teal);
         }
 
         nav a::after {
@@ -114,7 +178,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--accent-green);
+            background-color: var(--accent-teal);
             transition: var(--transition);
         }
 
@@ -133,86 +197,136 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(26, 62, 108, 0.8), rgba(26, 62, 108, 0.9)), 
+            background: linear-gradient(rgba(26, 111, 176, 0.8), rgba(26, 111, 176, 0.9)), 
                         url('https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
             color: var(--text-light);
             text-align: center;
-            padding: 4rem 2rem;
+            padding: 8rem 2rem;
         }
 
         .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             max-width: 700px;
-            margin: 0 auto 2rem;
+            margin: 0 auto 2.5rem;
         }
 
-        /* Main Content */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: var(--primary-blue);
-            font-size: 2.2rem;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent-green);
-            margin: 10px auto;
-        }
-
-        .section-description {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 3rem;
-            font-size: 1.1rem;
-            color: #555;
-        }
-
-        /* Gallery Filters */
-        .gallery-filters {
+        .hero-btns {
             display: flex;
+            gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 2rem;
         }
 
-        .filter-btn {
-            padding: 0.7rem 1.8rem;
-            background-color: var(--light-blue);
-            border: 2px solid var(--secondary-blue);
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 600;
+        /* Services Section */
+        .services {
+            background-color: var(--gray-bg);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
             transition: var(--transition);
-            font-family: 'Montserrat', sans-serif;
+            border-top: 4px solid var(--secondary-blue);
         }
 
-        .filter-btn:hover, .filter-btn.active {
-            background-color: var(--secondary-blue);
-            color: var(--text-light);
-            border-color: var(--secondary-blue);
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
-        /* Gallery Grid */
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--light-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--primary-blue);
+            font-size: 2rem;
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark-blue);
+        }
+
+        /* About Section */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-content h2 {
+            color: var(--dark-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .feature i {
+            color: var(--accent-teal);
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background-color: var(--light-blue);
+        }
+
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -251,7 +365,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(transparent, rgba(26, 62, 108, 0.9));
+            background: linear-gradient(transparent, rgba(26, 111, 176, 0.9));
             padding: 1.5rem;
             color: white;
             transform: translateY(100%);
@@ -262,104 +376,64 @@
             transform: translateY(0);
         }
 
-        .gallery-overlay h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--gray-bg);
         }
 
-        .gallery-overlay p {
-            font-size: 0.9rem;
-            opacity: 0.9;
+        .testimonials-container {
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-        }
-
-        .modal-content {
-            max-width: 90%;
-            max-height: 90%;
+        .testimonial {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
             position: relative;
         }
 
-        .modal-img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-
-        .close-modal {
+        .testimonial::before {
+            content: """;
+            font-family: Georgia, serif;
+            font-size: 5rem;
+            color: var(--light-blue);
             position: absolute;
-            top: -40px;
-            right: 0;
-            color: white;
-            font-size: 2.5rem;
-            cursor: pointer;
-            background: none;
-            border: none;
-            transition: var(--transition);
+            top: -10px;
+            left: 20px;
+            line-height: 1;
         }
 
-        .close-modal:hover {
-            color: var(--accent-green);
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
         }
 
-        /* Services Section */
-        .services {
-            background-color: var(--light-blue);
-            padding: 4rem 2rem;
-            margin-top: 3rem;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background-color: white;
-            border-radius: 8px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border-top: 4px solid var(--secondary-blue);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .service-icon {
-            width: 70px;
-            height: 70px;
-            background-color: var(--accent-green);
-            border-radius: 50%;
+        .testimonial-author {
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            color: white;
-            font-size: 1.8rem;
+            gap: 15px;
         }
 
-        .service-card h3 {
-            margin-bottom: 1rem;
-            color: var(--primary-blue);
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            margin-bottom: 0.2rem;
+            color: var(--dark-blue);
+        }
+
+        .author-info p {
+            color: #666;
+            font-size: 0.9rem;
         }
 
         /* CTA Section */
@@ -367,7 +441,7 @@
             background-color: var(--primary-blue);
             color: white;
             text-align: center;
-            padding: 4rem 2rem;
+            padding: 5rem 2rem;
         }
 
         .cta-section h2 {
@@ -375,72 +449,116 @@
             margin-bottom: 1rem;
         }
 
-        .cta-button {
-            display: inline-block;
-            background-color: var(--accent-green);
-            color: white;
-            padding: 0.9rem 2.2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 1.5rem;
-            transition: var(--transition);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.1rem;
-            border: 2px solid var(--accent-green);
+        .cta-section p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
         }
 
-        .cta-button:hover {
-            background-color: transparent;
-            border-color: white;
+        /* Contact Section */
+        .contact {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h2 {
+            color: var(--dark-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--light-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+        }
+
+        .contact-text h4 {
+            margin-bottom: 0.3rem;
+            color: var(--dark-blue);
+        }
+
+        .contact-form {
+            background-color: var(--gray-bg);
+            padding: 2.5rem;
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark-blue);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(26, 111, 176, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
         }
 
         /* Footer */
         footer {
-            background-color: var(--primary-blue);
+            background-color: var(--dark-blue);
             color: white;
-            padding: 3rem 2rem 1rem;
+            padding: 4rem 0 1rem;
         }
 
         .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            gap: 3rem;
+            margin-bottom: 3rem;
         }
 
-        .footer-logo {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .footer-logo img {
-            height: 60px;
-            width: auto;
-        }
-
-        .footer-logo-text {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: white;
-        }
-
-        .footer-logo-text span {
-            color: var(--accent-green);
+        .footer-about .logo {
+            margin-bottom: 1.5rem;
         }
 
         .footer-about p {
-            margin-top: 1rem;
             color: #ccc;
+            margin-bottom: 1.5rem;
         }
 
         .social-links {
             display: flex;
             gap: 1rem;
-            margin-top: 1rem;
         }
 
         .social-icon {
@@ -457,14 +575,14 @@
         }
 
         .social-icon:hover {
-            background-color: var(--accent-green);
+            background-color: var(--accent-teal);
             transform: translateY(-3px);
         }
 
         .footer-links h3 {
             margin-bottom: 1.5rem;
             font-size: 1.2rem;
-            color: var(--accent-green);
+            color: var(--accent-teal);
         }
 
         .footer-links ul {
@@ -482,24 +600,31 @@
         }
 
         .footer-links a:hover {
-            color: var(--accent-green);
+            color: var(--accent-teal);
             padding-left: 5px;
         }
 
         .footer-contact h3 {
             margin-bottom: 1.5rem;
             font-size: 1.2rem;
-            color: var(--accent-green);
+            color: var(--accent-teal);
         }
 
         .footer-contact p {
             margin-bottom: 0.8rem;
             color: #ccc;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .footer-contact i {
+            color: var(--accent-teal);
+            margin-top: 4px;
         }
 
         .copyright {
             text-align: center;
-            margin-top: 3rem;
             padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #aaa;
@@ -507,6 +632,17 @@
         }
 
         /* Responsive Design */
+        @media (max-width: 992px) {
+            .about, .contact {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+        }
+
         @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
@@ -523,7 +659,18 @@
             }
 
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
             }
 
             .gallery-grid {
@@ -532,6 +679,10 @@
 
             .section-title {
                 font-size: 1.8rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -557,217 +708,356 @@
             }
 
             .hero {
-                padding: 3rem 1rem;
+                padding: 6rem 1rem;
             }
 
             .hero h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 3rem 0;
             }
 
             .container {
-                padding: 1.5rem;
+                padding: 0 1.5rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <div class="header-container">
-            <div class="logo-container">
-                <!-- Using a text-based logo since we can't directly access the image -->
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-water"></i>
+                </div>
                 <div class="logo-text">
-                    <div class="logo-main">GREEN MONSTER</div>
-                    <div class="logo-sub">POOL CARE</div>
+                    <div class="logo-main">CRYSTAL BLUE</div>
+                    <div class="logo-sub">POOL SERVICES</div>
                 </div>
             </div>
-            <button class="mobile-menu-btn">☰</button>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
             <nav>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Gallery</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <section class="hero">
-        <h1>Our Pool Gallery</h1>
-        <p>Browse through our collection of stunning pool transformations and maintenance projects completed by our expert team.</p>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Premium Pool Care Services</h1>
+            <p>Transform your pool into a crystal-clear oasis with our professional maintenance, repair, and renovation services.</p>
+            <div class="hero-btns">
+                <a href="#contact" class="btn">Get a Free Quote</a>
+                <a href="#services" class="btn btn-outline">Our Services</a>
+            </div>
+        </div>
     </section>
 
-    <main class="container">
-        <h2 class="section-title">Our Work</h2>
-        <p class="section-description">At Green Monster Pool Care, we take pride in every project we complete. From routine maintenance to complete renovations, our work speaks for itself.</p>
-        
-        <div class="gallery-filters">
-            <button class="filter-btn active" data-filter="all">All Projects</button>
-            <button class="filter-btn" data-filter="cleaning">Pool Cleaning</button>
-            <button class="filter-btn" data-filter="renovation">Renovations</button>
-            <button class="filter-btn" data-filter="maintenance">Maintenance</button>
-        </div>
-
-        <div class="gallery-grid">
-            <!-- Pool Cleaning Images -->
-            <div class="gallery-item" data-category="cleaning">
-                <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pool Cleaning" class="gallery-img">
-                <div class="gallery-overlay">
-                    <h3>Complete Pool Cleaning</h3>
-                    <p>Before and after our professional cleaning service</p>
-                </div>
-            </div>
-            
-            <div class="gallery-item" data-category="cleaning">
-                <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pool Maintenance" class="gallery-img">
-                <div class="gallery-overlay">
-                    <h3>Weekly Maintenance</h3>
-                    <p>Regular upkeep for crystal clear water</p>
-                </div>
-            </div>
-            
-            <!-- Pool Renovation Images -->
-            <div class="gallery-item" data-category="renovation">
-                <img src="https://images.unsplash.com/photo-1598940605375-4c7c0d5b80e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pool Renovation" class="gallery-img">
-                <div class="gallery-overlay">
-                    <h3>Complete Pool Renovation</h3>
-                    <p>Transforming outdated pools into modern oases</p>
-                </div>
-            </div>
-            
-            <div class="gallery-item" data-category="renovation">
-                <img src="https://images.unsplash.com/photo-1560743173-567a3b5658b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pool Upgrade" class="gallery-img">
-                <div class="gallery-overlay">
-                    <h3>Pool Deck Upgrade</h3>
-                    <p>New tiling and surrounding area improvement</p>
-                </div>
-            </div>
-            
-            <!-- Maintenance Images -->
-            <div class="gallery-item" data-category="maintenance">
-                <img src="https://images.unsplash.com/photo-1576013551627-0cc20b965c2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pool Equipment" class="gallery-img">
-                <div class="gallery-overlay">
-                    <h3>Equipment Maintenance</h3>
-                    <p>Keeping pool systems running efficiently</p>
-                </div>
-            </div>
-            
-            <div class="gallery-item" data-category="maintenance">
-                <img src="https://images.unsplash.com/photo-1558618666-fcd258563cd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Chemical Balancing" class="gallery-img">
-                <div class="gallery-overlay">
-                    <h3>Chemical Balancing</h3>
-                    <p>Perfect water chemistry for safe swimming</p>
-                </div>
-            </div>
-            
-            <!-- Additional Images -->
-            <div class="gallery-item" data-category="cleaning">
-                <img src="https://images.unsplash.com/photo-1536746803623-cef87080bfc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pool Vacuuming" class="gallery-img">
-                <div class="gallery-overlay">
-                    <h3>Deep Cleaning</h3>
-                    <p>Removing debris and algae buildup</p>
-                </div>
-            </div>
-            
-            <div class="gallery-item" data-category="renovation">
-                <img src="https://images.unsplash.com/photo-1560743173-567a3b5658b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pool Lighting" class="gallery-img">
-                <div class="gallery-overlay">
-                    <h3>LED Lighting Installation</h3>
-                    <p>Enhancing pool ambiance with modern lighting</p>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <section class="services">
+    <!-- Services Section -->
+    <section class="services" id="services">
         <div class="container">
             <h2 class="section-title">Our Services</h2>
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-icon">💧</div>
-                    <h3>Pool Cleaning</h3>
-                    <p>Professional cleaning services to keep your pool sparkling clean and safe for swimming.</p>
+                    <div class="service-icon">
+                        <i class="fas fa-pump-soap"></i>
+                    </div>
+                    <h3>Regular Maintenance</h3>
+                    <p>Weekly or bi-weekly cleaning, chemical balancing, and equipment checks to keep your pool pristine.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🛠️</div>
-                    <h3>Maintenance</h3>
-                    <p>Regular maintenance plans to ensure your pool remains in perfect condition all year round.</p>
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Repairs & Troubleshooting</h3>
+                    <p>Expert repair services for pumps, filters, heaters, and all pool equipment issues.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🏊</div>
-                    <h3>Renovations</h3>
-                    <p>Transform your outdated pool into a modern oasis with our renovation services.</p>
+                    <div class="service-icon">
+                        <i class="fas fa-house-flood-water"></i>
+                    </div>
+                    <h3>Pool Renovations</h3>
+                    <p>Transform your outdated pool with new tiles, coping, decking, and modern features.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🔧</div>
-                    <h3>Repairs</h3>
-                    <p>Expert repair services for pumps, filters, heaters and all pool equipment.</p>
+                    <div class="service-icon">
+                        <i class="fas fa-vial"></i>
+                    </div>
+                    <h3>Water Testing</h3>
+                    <p>Professional water analysis and chemical balancing for safe, crystal-clear swimming.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <h2>Why Choose Crystal Blue Pools?</h2>
+                <p>With over 15 years of experience in the pool service industry, we've built a reputation for excellence, reliability, and exceptional customer service.</p>
+                <p>Our team of certified technicians uses state-of-the-art equipment and premium products to ensure your pool remains in perfect condition year-round.</p>
+                <div class="features">
+                    <div class="feature">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <h4>Licensed & Insured</h4>
+                            <p>Fully certified and insured for your peace of mind</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <h4>24/7 Emergency Service</h4>
+                            <p>We're here when you need us most</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <h4>Eco-Friendly Solutions</h4>
+                            <p>Using environmentally safe products</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <h4>Competitive Pricing</h4>
+                            <p>Quality service at fair, transparent prices</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="#contact" class="btn">Contact Us Today</a>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1598940605375-4c7c0d5b80e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pool technician at work">
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Our Work</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pool cleaning" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h3>Complete Pool Cleaning</h3>
+                        <p>Before and after our professional cleaning service</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pool maintenance" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h3>Weekly Maintenance</h3>
+                        <p>Regular upkeep for crystal clear water</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1598940605375-4c7c0d5b80e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pool renovation" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h3>Complete Pool Renovation</h3>
+                        <p>Transforming outdated pools into modern oases</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1560743173-567a3b5658b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pool upgrade" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h3>Pool Deck Upgrade</h3>
+                        <p>New tiling and surrounding area improvement</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <div class="testimonials-container">
+                <div class="testimonial">
+                    <p class="testimonial-text">Crystal Blue transformed our outdated pool into a stunning backyard oasis. Their attention to detail and professionalism was impressive from start to finish. We couldn't be happier with the results!</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sarah Johnson" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Orlando, FL</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">I've been using their weekly maintenance service for over two years now, and my pool has never looked better. Reliable, knowledgeable, and always on time. Highly recommended!</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Torres" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Michael Torres</h4>
+                            <p>Winter Park, FL</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
     <section class="cta-section">
-        <h2>Ready to Transform Your Pool?</h2>
-        <p>Contact us today for a free consultation and estimate</p>
-        <a href="#" class="cta-button">Get a Free Quote</a>
+        <div class="container">
+            <h2>Ready to Enjoy a Perfect Pool?</h2>
+            <p>Contact us today for a free consultation and estimate. Let us handle the maintenance so you can focus on enjoying your pool.</p>
+            <a href="#contact" class="btn">Get a Free Quote</a>
+        </div>
     </section>
 
-    <footer>
-        <div class="footer-container">
-            <div class="footer-about">
-                <div class="footer-logo">
-                    <div class="footer-logo-text">GREEN <span>MONSTER</span></div>
-                    <div class="logo-sub">POOL CARE</div>
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-info">
+                <h2>Get In Touch</h2>
+                <p>Have questions about our services or ready to schedule an appointment? We're here to help!</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Our Location</h4>
+                            <p>123 Poolside Avenue, Orlando, FL 32801</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Phone Number</h4>
+                            <p>(407) 555-POOL (7665)</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email Address</h4>
+                            <p>info@crystalbluepools.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Business Hours</h4>
+                            <p>Monday - Friday: 8am - 6pm<br>Saturday: 9am - 2pm</p>
+                        </div>
+                    </div>
                 </div>
-                <p>Professional pool care services with over 15 years of experience. We're committed to keeping your pool in perfect condition.</p>
-                <div class="social-links">
-                    <a href="#" class="social-icon">f</a>
-                    <a href="#" class="social-icon">in</a>
-                    <a href="#" class="social-icon">ig</a>
-                    <a href="#" class="social-icon">t</a>
-                </div>
             </div>
-            <div class="footer-links">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Gallery</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h3>Services</h3>
-                <ul>
-                    <li><a href="#">Pool Cleaning</a></li>
-                    <li><a href="#">Maintenance</a></li>
-                    <li><a href="#">Renovations</a></li>
-                    <li><a href="#">Repairs</a></li>
-                    <li><a href="#">Chemical Balancing</a></li>
-                </ul>
-            </div>
-            <div class="footer-contact">
-                <h3>Contact Us</h3>
-                <p>123 Poolside Avenue</p>
-                <p>Orlando, FL 32801</p>
-                <p>Phone: (407) 555-POOL</p>
-                <p>Email: info@greenmonsterpoolcare.com</p>
+            <div class="contact-form">
+                <h3>Send Us a Message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service Needed</label>
+                        <select id="service" class="form-control">
+                            <option value="">Select a service</option>
+                            <option value="maintenance">Regular Maintenance</option>
+                            <option value="repair">Repairs</option>
+                            <option value="renovation">Renovation</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
             </div>
         </div>
-        <div class="copyright">
-            <p>&copy; 2023 Green Monster Pool Care. All rights reserved.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <div class="logo-text">
+                            <div class="logo-main">CRYSTAL BLUE</div>
+                            <div class="logo-sub">POOL SERVICES</div>
+                        </div>
+                    </div>
+                    <p>Professional pool care services with over 15 years of experience. We're committed to keeping your pool in perfect condition.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li><a href="#">Pool Cleaning</a></li>
+                        <li><a href="#">Maintenance</a></li>
+                        <li><a href="#">Renovations</a></li>
+                        <li><a href="#">Repairs</a></li>
+                        <li><a href="#">Chemical Balancing</a></li>
+                        <li><a href="#">Equipment Installation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Poolside Avenue, Orlando, FL 32801</p>
+                    <p><i class="fas fa-phone-alt"></i> (407) 555-POOL (7665)</p>
+                    <p><i class="fas fa-envelope"></i> info@crystalbluepools.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 8am-6pm, Sat: 9am-2pm</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Crystal Blue Pool Services. All rights reserved.</p>
+            </div>
         </div>
     </footer>
-
-    <div class="modal" id="imageModal">
-        <button class="close-modal">&times;</button>
-        <div class="modal-content">
-            <img class="modal-img" id="modalImage">
-        </div>
-    </div>
 
     <script>
         // Mobile menu toggle
@@ -779,49 +1069,31 @@
                 nav.classList.toggle('show');
             });
             
-            // Filter functionality
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const galleryItems = document.querySelectorAll('.gallery-item');
-            
-            filterButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    // Remove active class from all buttons
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    // Add active class to clicked button
-                    button.classList.add('active');
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
                     
-                    const filterValue = button.getAttribute('data-filter');
-                    
-                    galleryItems.forEach(item => {
-                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                            item.style.display = 'block';
-                        } else {
-                            item.style.display = 'none';
-                        }
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
                     });
+                    
+                    // Close mobile menu after clicking a link
+                    if (nav.classList.contains('show')) {
+                        nav.classList.remove('show');
+                    }
                 });
             });
             
-            // Modal functionality
-            const modal = document.getElementById('imageModal');
-            const modalImg = document.getElementById('modalImage');
-            const closeModal = document.querySelector('.close-modal');
-            
-            galleryItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    modal.style.display = 'flex';
-                    modalImg.src = item.querySelector('img').src;
-                });
-            });
-            
-            closeModal.addEventListener('click', () => {
-                modal.style.display = 'none';
-            });
-            
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.style.display = 'none';
-                }
+            // Form submission
+            const contactForm = document.getElementById('contactForm');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! We will get back to you soon.');
+                contactForm.reset();
             });
         });
     </script>
