@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1094,7 +1093,7 @@
             }
             
             .cert-grid {
-                grid-template-columns: repeat(4, 1fr);
+                grid-template-columns: repeat(3, 1fr);
             }
             
             .projects-grid {
@@ -1102,7 +1101,7 @@
             }
             
             .blog-grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(2, 1fr);
             }
             
             .contact-grid {
@@ -1135,7 +1134,6 @@
     </style>
 </head>
 <body>
-    <!-- Rest of your HTML remains exactly the same -->
     <div class="bg-animation">
         <canvas id="bgCanvas"></canvas>
     </div>
@@ -1182,7 +1180,7 @@
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="tech-logo" alt="JavaScript">
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" class="tech-logo" alt="FastAPI">
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" class="tech-logo" alt="Docker">
-                <img src="https://img.icons8.com/?size=100&id=al1VlNCK9eK5&format=png&color=FFFFFF" class="tech-logo" alt="AWS">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" class="tech-logo" alt="AWS">
                 <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/github-white-icon.png" class="tech-logo" alt="Git">
             </div>
             <div class="cta-buttons">
@@ -1393,7 +1391,7 @@
                         Docker
                     </span>
                     <span class="tech-tag">
-                        <img src="https://img.icons8.com/?size=100&id=al1VlNCK9eK5&format=png&color=FFFFFF" alt="AWS">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="AWS">
                         AWS
                     </span>
                 </div>
@@ -1662,12 +1660,12 @@
             // Primary API - NewsAPI
             newsapi: {
                 key: '18628e29345d40e48c19a7acc04c4948',
-                url: 'https://newsapi.org/v2/everything?q=artificial+intelligence+AI+machine+learning&language=en&sortBy=publishedAt&pageSize=6&apiKey='
+                url: 'https://newsapi.org/v2/everything?q=artificial+intelligence+AI+machine+learning&language=en&sortBy=publishedAt&pageSize=4&apiKey='
             },
             // Backup API - GNews
             gnews: {
                 key: '0b92405fa1cab17dd8a2b48092d754d5',
-                url: 'https://gnews.io/api/v4/search?q=artificial%20intelligence&lang=en&country=us&max=6&apikey='
+                url: 'https://gnews.io/api/v4/search?q=artificial%20intelligence&lang=en&country=us&max=4&apikey='
             }
         };
 
@@ -1705,7 +1703,7 @@
             const data = await response.json();
             
             if (data.articles && data.articles.length > 0) {
-                container.innerHTML = data.articles.map(article => {
+                container.innerHTML = data.articles.slice(0, 4).map(article => {
                     const excerpt = article.description ? 
                         article.description.substring(0, 120) + '...' : 
                         'Click to read more about AI developments.';
@@ -1749,7 +1747,7 @@
             const data = await response.json();
             
             if (data.articles && data.articles.length > 0) {
-                container.innerHTML = data.articles.map(article => {
+                container.innerHTML = data.articles.slice(0, 4).map(article => {
                     const excerpt = article.description ? 
                         article.description.substring(0, 120) + '...' : 
                         'Click to read more about AI developments.';
@@ -1781,7 +1779,7 @@
             }
         }
 
-        // Fallback static AI news
+        // Fallback static AI news (4 items)
         function showFallbackNews() {
             const container = document.getElementById('blogContainer');
             const fallbackNews = [
@@ -1816,22 +1814,6 @@
                     url: "#",
                     source: "AI Ethics Review",
                     image: "https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=400&q=80"
-                },
-                {
-                    title: "Neural Networks in Natural Language Processing",
-                    description: "Breakthroughs in NLP are enabling more human-like interactions with AI systems, transforming customer service and content creation.",
-                    date: "March 5, 2025",
-                    url: "#",
-                    source: "Tech Research Hub",
-                    image: "https://images.unsplash.com/photo-1535223289827-42f1e9919769?w=400&q=80"
-                },
-                {
-                    title: "AI-Powered Cybersecurity Solutions",
-                    description: "How machine learning is being used to detect and prevent cyber threats in real-time, enhancing digital security across platforms.",
-                    date: "March 3, 2025",
-                    url: "#",
-                    source: "Security Tech News",
-                    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&q=80"
                 }
             ];
 
