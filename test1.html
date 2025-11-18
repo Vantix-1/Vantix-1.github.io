@@ -26,8 +26,8 @@
         }
 
         :root {
-            --bg-dark: #1a1a2e; /* Brighter background */
-            --bg-card: rgba(30, 30, 50, 0.3); /* More transparent cards */
+            --bg-dark: #1a1a2e;
+            --bg-card: rgba(30, 30, 50, 0.3);
             --accent: #00d4ff;
             --accent-glow: rgba(0, 212, 255, 0.3);
             --text-primary: #ffffff;
@@ -42,7 +42,6 @@
             --cyber-purple: #764ba2;
         }
 
-        /* Modern CSS Smooth Scroll */
         html {
             scroll-behavior: smooth;
         }
@@ -55,7 +54,6 @@
             overflow-x: hidden;
         }
 
-        /* Animated background - More visible */
         .bg-animation {
             position: fixed;
             top: 0;
@@ -63,7 +61,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            opacity: 0.4; /* Increased opacity for better visibility */
+            opacity: 0.4;
         }
 
         .bg-animation canvas {
@@ -71,12 +69,11 @@
             height: 100%;
         }
 
-        /* Navigation - More transparent */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(26, 26, 46, 0.85); /* More transparent */
+            background: rgba(26, 26, 46, 0.85);
             backdrop-filter: blur(10px);
             padding: 1rem 5%;
             z-index: 1000;
@@ -117,7 +114,6 @@
             color: var(--accent);
         }
 
-        /* Mobile Menu Toggle */
         .menu-toggle {
             display: none;
             flex-direction: column;
@@ -136,7 +132,6 @@
             transition: all 0.3s ease;
         }
 
-        /* Hero Section - Fixed for mobile */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -152,7 +147,6 @@
             animation: fadeInUp 1s ease-out;
         }
 
-        /* Cyberpunk Name Animation - Optimized for mobile */
         .cyber-name {
             font-size: 2.5rem;
             font-weight: 900;
@@ -169,21 +163,6 @@
                 0 0 20px var(--cyber-green),
                 0 0 40px var(--cyber-blue);
             word-wrap: break-word;
-        }
-
-        .cyber-name::before {
-            content: 'VANCE FROMMER';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, var(--cyber-blue), transparent);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: matrixScan 3s linear infinite;
-            opacity: 0.7;
         }
 
         .hero .subtitle {
@@ -277,7 +256,6 @@
             box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
         }
 
-        /* Section styling */
         section {
             padding: 3rem 5%;
             max-width: 1200px;
@@ -298,7 +276,6 @@
             letter-spacing: 1px;
         }
 
-        /* New Cyberpunk Animations */
         @keyframes matrixFlicker {
             0%, 100% { 
                 opacity: 1;
@@ -351,9 +328,8 @@
             }
         }
 
-        /* About Me Section - More transparent */
         .about {
-            background: rgba(30, 30, 50, 0.3); /* More transparent */
+            background: rgba(30, 30, 50, 0.3);
             border-radius: 10px;
             overflow: hidden;
             padding: 2rem;
@@ -405,7 +381,7 @@
             align-items: center;
             gap: 0.8rem;
             padding: 0.8rem;
-            background: rgba(0, 212, 255, 0.05); /* More transparent */
+            background: rgba(0, 212, 255, 0.05);
             border-radius: 8px;
             border: 1px solid rgba(0, 212, 255, 0.1);
             transition: all 0.3s ease;
@@ -483,7 +459,7 @@
         }
 
         .skill-tag {
-            background: rgba(0, 212, 255, 0.08); /* More transparent */
+            background: rgba(0, 212, 255, 0.08);
             color: var(--accent);
             padding: 0.4rem 0.8rem;
             border-radius: 4px;
@@ -517,7 +493,7 @@
         }
 
         .profile-card {
-            background: rgba(30, 30, 50, 0.3); /* More transparent */
+            background: rgba(30, 30, 50, 0.3);
             border-radius: 10px;
             padding: 1.5rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -549,7 +525,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 3px solid rgba(30, 30, 50, 0.3); /* More transparent */
+            border: 3px solid rgba(30, 30, 50, 0.3);
             box-shadow: 0 8px 25px rgba(0, 212, 255, 0.2);
             overflow: hidden;
             position: relative;
@@ -588,7 +564,7 @@
         .profile-stat {
             text-align: center;
             padding: 0.7rem;
-            background: rgba(102, 126, 234, 0.05); /* More transparent */
+            background: rgba(102, 126, 234, 0.05);
             border-radius: 8px;
             border: 1px solid rgba(102, 126, 234, 0.1);
         }
@@ -628,7 +604,7 @@
         }
 
         .interest-tag {
-            background: rgba(102, 126, 234, 0.08); /* More transparent */
+            background: rgba(102, 126, 234, 0.08);
             color: #667eea;
             padding: 0.3rem 0.7rem;
             border-radius: 4px;
@@ -638,11 +614,10 @@
             font-family: 'Share Tech Mono', monospace;
         }
 
-        /* Certifications Section - More transparent */
         .certifications {
             text-align: center;
             padding: 2rem 5%;
-            background: rgba(30, 30, 50, 0.3); /* More transparent */
+            background: rgba(30, 30, 50, 0.3);
             border-radius: 10px;
             margin: 1rem auto;
             max-width: 900px;
@@ -657,7 +632,7 @@
         }
 
         .cert-card {
-            background: rgba(30, 30, 50, 0.3); /* More transparent */
+            background: rgba(30, 30, 50, 0.3);
             padding: 1.5rem;
             border-radius: 10px;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -709,7 +684,6 @@
             font-family: 'Share Tech Mono', monospace;
         }
 
-        /* Projects Grid - More transparent */
         .projects-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -718,7 +692,7 @@
         }
 
         .project-card {
-            background: rgba(30, 30, 50, 0.3); /* More transparent */
+            background: rgba(30, 30, 50, 0.3);
             border-radius: 10px;
             padding: 1.5rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -778,7 +752,7 @@
         }
 
         .tech-tag {
-            background: rgba(0, 212, 255, 0.08); /* More transparent */
+            background: rgba(0, 212, 255, 0.08);
             color: var(--accent);
             padding: 0.3rem 0.7rem;
             border-radius: 4px;
@@ -818,7 +792,6 @@
             gap: 0.8rem;
         }
 
-        /* Blog Section - More transparent */
         .blog-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -827,7 +800,7 @@
         }
 
         .blog-card {
-            background: rgba(30, 30, 50, 0.3); /* More transparent */
+            background: rgba(30, 30, 50, 0.3);
             border-radius: 10px;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -908,7 +881,6 @@
             font-family: 'Share Tech Mono', monospace;
         }
 
-        /* Contact Section - More transparent */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -917,7 +889,7 @@
         }
 
         .contact-card {
-            background: rgba(30, 30, 50, 0.3); /* More transparent */
+            background: rgba(30, 30, 50, 0.3);
             padding: 1.5rem;
             border-radius: 10px;
             text-align: center;
@@ -956,7 +928,6 @@
             font-size: 0.9rem;
         }
 
-        /* Footer */
         footer {
             text-align: center;
             padding: 2rem 5%;
@@ -966,14 +937,13 @@
             font-size: 0.9rem;
         }
 
-        /* Mobile Menu - More transparent */
         .mobile-menu {
             position: fixed;
             top: 0;
             right: -100%;
             width: 80%;
             height: 100vh;
-            background: rgba(26, 26, 46, 0.95); /* More transparent */
+            background: rgba(26, 26, 46, 0.95);
             backdrop-filter: blur(15px);
             z-index: 1001;
             transition: right 0.3s ease;
@@ -1017,9 +987,7 @@
             cursor: pointer;
         }
 
-        /* Responsive Design */
         @media (min-width: 768px) {
-            /* Tablet styles */
             .cyber-name {
                 font-size: 3.5rem;
             }
@@ -1079,7 +1047,6 @@
         }
 
         @media (min-width: 1024px) {
-            /* Desktop styles */
             .cyber-name {
                 font-size: 4.5rem;
             }
@@ -1118,7 +1085,6 @@
         }
 
         @media (max-width: 767px) {
-            /* Mobile-specific styles */
             .menu-toggle {
                 display: flex;
             }
@@ -1156,7 +1122,6 @@
         </div>
     </nav>
 
-    <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobile-nav">
         <button class="close-menu" id="close-menu">×</button>
         <ul>
@@ -1333,37 +1298,37 @@
         <h2>AI Certifications & Progress</h2>
         <div class="cert-grid">
             <div class="cert-card">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" class="cert-logo" alt="AWS">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" class="cert-logo" alt="AWS">
                 <h4>AWS AI Practitioner</h4>
                 <p>AWS Certified AI Practitioner</p>
                 <span class="status-badge">Planned</span>
             </div>
             <div class="cert-card">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg" class="cert-logo" alt="GCP">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" class="cert-logo" alt="GCP">
                 <h4>Google Cloud AI Engineer</h4>
                 <p>Google Cloud AI Engineer</p>
                 <span class="status-badge">Planned</span>
             </div>
             <div class="cert-card">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg" class="cert-logo" alt="Azure">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" class="cert-logo" alt="Azure">
                 <h4>Azure AI Engineer</h4>
                 <p>Microsoft Azure AI Engineer</p>
                 <span class="status-badge">Planned</span>
             </div>
             <div class="cert-card">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/openai/openai-original.svg" class="cert-logo" alt="OpenAI">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/openai/openai-original.svg" class="cert-logo" alt="OpenAI">
                 <h4>OpenAI API Certification</h4>
                 <p>OpenAI API Certification</p>
                 <span class="status-badge">Planned</span>
             </div>
             <div class="cert-card">
-                <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" class="cert-logo" alt="Hugging Face" style="filter: brightness(0) invert(1);">
+                <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" class="cert-logo" alt="Hugging Face">
                 <h4>Hugging Face NLP</h4>
                 <p>Hugging Face NLP Certification</p>
                 <span class="status-badge">Planned</span>
             </div>
             <div class="cert-card">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" class="cert-logo" alt="Python">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="cert-logo" alt="Python">
                 <h4>Python PCEP/PCAP</h4>
                 <p>Python Institute Certification</p>
                 <span class="status-badge">In Progress</span>
@@ -1657,12 +1622,10 @@
 
         // API Configuration with your keys
         const API_CONFIG = {
-            // Primary API - NewsAPI
             newsapi: {
                 key: '18628e29345d40e48c19a7acc04c4948',
                 url: 'https://newsapi.org/v2/everything?q=artificial+intelligence+AI+machine+learning&language=en&sortBy=publishedAt&pageSize=4&apiKey='
             },
-            // Backup API - GNews
             gnews: {
                 key: '0b92405fa1cab17dd8a2b48092d754d5',
                 url: 'https://gnews.io/api/v4/search?q=artificial%20intelligence&lang=en&country=us&max=4&apikey='
@@ -1673,7 +1636,6 @@
         async function fetchAINews() {
             const container = document.getElementById('blogContainer');
             
-            // Try NewsAPI first
             try {
                 await fetchWithNewsAPI();
                 return;
@@ -1681,7 +1643,6 @@
                 console.log('NewsAPI failed, trying GNews...');
             }
             
-            // Try GNews as backup
             try {
                 await fetchWithGNews();
                 return;
@@ -1689,7 +1650,6 @@
                 console.log('GNews failed, using static content...');
             }
             
-            // Final fallback to static content
             showFallbackNews();
         }
 
@@ -1739,7 +1699,6 @@
             const container = document.getElementById('blogContainer');
             const API_URL = `${API_CONFIG.gnews.url}${API_CONFIG.gnews.key}`;
             
-            // Use CORS proxy for GNews
             const proxyUrl = 'https://api.allorigins.win/raw?url=';
             const response = await fetch(proxyUrl + encodeURIComponent(API_URL));
             if (!response.ok) throw new Error('GNews failed');
