@@ -1512,46 +1512,79 @@
     </footer>
 
     <script>
-    // NEWS API INTEGRATION - ADD THIS FIRST
-    async function fetchNews() {
-        const blogContainer = document.getElementById('blogContainer');
+        // NEWS API INTEGRATION - CORRECTED VERSION
+        async function fetchNews() {
+            const blogContainer = document.getElementById('blogContainer');
+    
+            try {
+                const API_KEY = '0b92405fa1cab17dd8a2b48092d754d5';
         
-        try {
-            const API_KEY = '0b92405fa1cab17dd8a2b48092d754d5';
-            const response = await fetch('https://gnews.io/api/v4/search?q=artificial%20intelligence&lang=en&max=6&apikey=${API_KEY}');
-            
-            if (!response.ok) throw new Error('Failed to fetch news');
-            
+            // ✅ Fixed: Use backticks for template literal
+            const response = await fetch(`https://gnews.io/api/v4/search?q=artificial%20intelligence&lang=en&max=6&apikey=${API_KEY}`);
+        
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+        
             const data = await response.json();
+        
+            // Check if we actually got articles
+            if (!data.articles || data.articles.length === 0) {
+                throw new Error('No articles found');
+            }
+        
             blogContainer.innerHTML = '';
-            
+        
             data.articles.forEach(article => {
                 const blogCard = document.createElement('a');
                 blogCard.href = article.url;
                 blogCard.target = '_blank';
                 blogCard.className = 'blog-card';
-                
+            
                 const imageUrl = article.image || 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&q=80';
-                const date = new Date(article.publishedAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+                const date = new Date(article.publishedAt).toLocaleDateString('en-US', { 
+                    month: 'long', 
+                    day: 'numeric', 
+                    year: 'numeric' 
+                });
+            
+                // Truncate long titles and descriptions
+                const title = article.title.length > 80 
+                    ? article.title.substring(0, 80) + '...' 
+                    : article.title;
                 
+                const description = article.description 
+                    ? (article.description.length > 120 
+                        ? article.description.substring(0, 120) + '...' 
+                        : article.description)
+                    : 'Click to read more...';
+            
                 blogCard.innerHTML = `
                     <div class="blog-image" style="background-image: url('${imageUrl}')"></div>
                     <div class="blog-content">
                         <div class="blog-date">${date}</div>
-                        <h3>${article.title}</h3>
-                        <p>${article.description || 'Click to read more...'}</p>
+                        <h3>${title}</h3>
+                        <p>${description}</p>
                         <span class="blog-source">${article.source.name}</span>
                     </div>
                 `;
-                
+            
                 blogContainer.appendChild(blogCard);
             });
+        
         } catch (error) {
             console.error('Error fetching news:', error);
-            blogContainer.innerHTML = '<div class="loading">Unable to load news. Please try again later.</div>';
+            blogContainer.innerHTML = `
+                <div class="loading">
+                    <p>Unable to load latest AI news.</p>
+                    <p style="font-size: 0.8rem; margin-top: 0.5rem;">Error: ${error.message}</p>
+                    <p style="font-size: 0.8rem; margin-top: 0.5rem;">Check console for details.</p>
+                </div>
+            `;
         }
     }
 
+    // Call the function when DOM is loaded
     document.addEventListener('DOMContentLoaded', fetchNews);
 
     // Animated background
