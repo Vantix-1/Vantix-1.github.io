@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vance Frommer | AI Developer</title>
+    <title>Vance Frommer | Automation & AI Developer</title>
     
-    <meta name="description" content="Vance Frommer - AI Developer specializing in Python, AI frameworks, and production AI systems. Marine Veteran building intelligent applications.">
-    <meta name="keywords" content="AI Developer, Machine Learning, Python, LangChain, OpenAI, AWS, Docker, Marine Corps">
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Vance Frommer - Automation & AI Developer specializing in Python, Flask, and AI integration. Marine Veteran building intelligent systems.">
+    <meta name="keywords" content="AI Developer, Automation, Python, Flask, AWS, Docker, Marine Corps">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Vance Frommer | Automation & AI Developer">
+    <meta property="og:description" content="Building intelligent automation systems and AI tools. Marine turned developer.">
+    <meta property="og:type" content="website">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,18 +26,23 @@
         }
 
         :root {
-            --bg-dark: #1a1a2e;
-            --bg-card: rgba(30, 30, 50, 0.3);
+            --bg-dark: #1a1a2e; /* Brighter background */
+            --bg-card: rgba(30, 30, 50, 0.3); /* More transparent cards */
             --accent: #00d4ff;
             --accent-glow: rgba(0, 212, 255, 0.3);
             --text-primary: #ffffff;
             --text-secondary: #a0a0b0;
             --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-accent: linear-gradient(135deg, #00d4ff 0%, #667eea 100%);
             --success: #00ff88;
+            --warning: #ffaa00;
+            --error: #ff4444;
             --cyber-blue: #00d4ff;
             --cyber-green: #00ff9d;
+            --cyber-purple: #764ba2;
         }
 
+        /* Modern CSS Smooth Scroll */
         html {
             scroll-behavior: smooth;
         }
@@ -44,6 +55,7 @@
             overflow-x: hidden;
         }
 
+        /* Animated background - More visible */
         .bg-animation {
             position: fixed;
             top: 0;
@@ -51,14 +63,20 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            opacity: 0.4;
+            opacity: 0.4; /* Increased opacity for better visibility */
         }
 
+        .bg-animation canvas {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Navigation - More transparent */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(26, 26, 46, 0.85);
+            background: rgba(26, 26, 46, 0.85); /* More transparent */
             backdrop-filter: blur(10px);
             padding: 1rem 5%;
             z-index: 1000;
@@ -99,6 +117,26 @@
             color: var(--accent);
         }
 
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--accent);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section - Fixed for mobile */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -114,6 +152,7 @@
             animation: fadeInUp 1s ease-out;
         }
 
+        /* Cyberpunk Name Animation - Optimized for mobile */
         .cyber-name {
             font-size: 2.5rem;
             font-weight: 900;
@@ -129,6 +168,7 @@
                 0 0 10px var(--cyber-green),
                 0 0 20px var(--cyber-green),
                 0 0 40px var(--cyber-blue);
+            word-wrap: break-word;
         }
 
         .cyber-name::before {
@@ -224,6 +264,20 @@
             box-shadow: 0 15px 40px var(--accent-glow);
         }
 
+        .btn-secondary {
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            background: transparent;
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: var(--bg-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Section styling */
         section {
             padding: 3rem 5%;
             max-width: 1200px;
@@ -244,6 +298,7 @@
             letter-spacing: 1px;
         }
 
+        /* New Cyberpunk Animations */
         @keyframes matrixFlicker {
             0%, 100% { 
                 opacity: 1;
@@ -261,6 +316,28 @@
                     0 0 10px var(--cyber-green),
                     0 0 20px var(--cyber-blue);
             }
+            75% {
+                opacity: 0.9;
+                text-shadow: 
+                    0 0 8px var(--cyber-green),
+                    0 0 15px var(--cyber-green),
+                    0 0 25px var(--cyber-green),
+                    0 0 35px var(--cyber-blue);
+            }
+        }
+
+        @keyframes matrixScan {
+            0% {
+                transform: translateX(-100%) skewX(-15deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateX(200%) skewX(-15deg);
+                opacity: 0;
+            }
         }
 
         @keyframes fadeInUp {
@@ -274,10 +351,298 @@
             }
         }
 
+        /* About Me Section - More transparent */
+        .about {
+            background: rgba(30, 30, 50, 0.3); /* More transparent */
+            border-radius: 10px;
+            overflow: hidden;
+            padding: 2rem;
+            margin: 1rem auto;
+            max-width: 900px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-text {
+            padding-right: 0;
+        }
+
+        .about-text h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            color: var(--accent);
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            font-family: 'Share Tech Mono', monospace;
+            text-align: center;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin: 1.2rem 0;
+            width: 100%;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem;
+            background: rgba(0, 212, 255, 0.05); /* More transparent */
+            border-radius: 8px;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            transition: all 0.3s ease;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .highlight-item:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.1);
+        }
+
+        .highlight-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .highlight-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .highlight-value {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .highlight-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 0.2rem;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .skills-container {
+            margin-top: 1.2rem;
+            width: 100%;
+        }
+
+        .skill-category {
+            margin-bottom: 1.2rem;
+        }
+
+        .skill-category h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .skill-category h4::before {
+            content: '>';
+            color: var(--accent);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .skill-tag {
+            background: rgba(0, 212, 255, 0.08); /* More transparent */
+            color: var(--accent);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .skill-tag:hover {
+            background: rgba(0, 212, 255, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.2);
+        }
+
+        .skill-tag img {
+            width: 14px;
+            height: 14px;
+        }
+
+        .about-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .profile-card {
+            background: rgba(30, 30, 50, 0.3); /* More transparent */
+            border-radius: 10px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 350px;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid rgba(30, 30, 50, 0.3); /* More transparent */
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.2);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .marine-flag {
+            width: 100%;
+            height: 100%;
+            background: url('https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGgxOXFzNmh0Y3JmZXJhdmRweDlnYmhtYjR1NnFrYXpxcWNqNWp1bCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT1Ra3T9zCBEA2n3va/giphy.gif') center/cover no-repeat;
+            border-radius: 50%;
+        }
+
+        .profile-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .profile-title {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+            margin: 1.2rem 0;
+        }
+
+        .profile-stat {
+            text-align: center;
+            padding: 0.7rem;
+            background: rgba(102, 126, 234, 0.05); /* More transparent */
+            border-radius: 8px;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: 0.3rem;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .profile-interests {
+            margin-top: 1.2rem;
+        }
+
+        .profile-interests h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.7rem;
+            color: var(--text-primary);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .interest-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            justify-content: center;
+        }
+
+        .interest-tag {
+            background: rgba(102, 126, 234, 0.08); /* More transparent */
+            color: #667eea;
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        /* Certifications Section - More transparent */
         .certifications {
             text-align: center;
             padding: 2rem 5%;
-            background: rgba(30, 30, 50, 0.3);
+            background: rgba(30, 30, 50, 0.3); /* More transparent */
             border-radius: 10px;
             margin: 1rem auto;
             max-width: 900px;
@@ -292,7 +657,7 @@
         }
 
         .cert-card {
-            background: rgba(30, 30, 50, 0.3);
+            background: rgba(30, 30, 50, 0.3); /* More transparent */
             padding: 1.5rem;
             border-radius: 10px;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -344,6 +709,7 @@
             font-family: 'Share Tech Mono', monospace;
         }
 
+        /* Projects Grid - More transparent */
         .projects-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -352,7 +718,7 @@
         }
 
         .project-card {
-            background: rgba(30, 30, 50, 0.3);
+            background: rgba(30, 30, 50, 0.3); /* More transparent */
             border-radius: 10px;
             padding: 1.5rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -361,10 +727,26 @@
             overflow: hidden;
         }
 
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
         .project-card:hover {
             transform: translateY(-5px);
             border-color: var(--accent);
             box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
         }
 
         .project-icon {
@@ -396,14 +778,22 @@
         }
 
         .tech-tag {
-            background: rgba(0, 212, 255, 0.08);
+            background: rgba(0, 212, 255, 0.08); /* More transparent */
             color: var(--accent);
             padding: 0.3rem 0.7rem;
             border-radius: 4px;
             font-size: 0.8rem;
             font-weight: 500;
             border: 1px solid rgba(0, 212, 255, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
             font-family: 'Share Tech Mono', monospace;
+        }
+
+        .tech-tag img {
+            width: 12px;
+            height: 12px;
         }
 
         .project-links {
@@ -424,6 +814,11 @@
             font-family: 'Share Tech Mono', monospace;
         }
 
+        .project-link:hover {
+            gap: 0.8rem;
+        }
+
+        /* Blog Section - More transparent */
         .blog-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -432,7 +827,7 @@
         }
 
         .blog-card {
-            background: rgba(30, 30, 50, 0.3);
+            background: rgba(30, 30, 50, 0.3); /* More transparent */
             border-radius: 10px;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -455,6 +850,12 @@
             background-color: var(--bg-dark);
             background-size: cover;
             background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--accent);
+            flex-shrink: 0;
         }
 
         .blog-content {
@@ -489,6 +890,25 @@
             font-family: 'Share Tech Mono', monospace;
         }
 
+        .blog-source {
+            display: inline-block;
+            margin-top: auto;
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            grid-column: 1 / -1;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        /* Contact Section - More transparent */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -497,7 +917,7 @@
         }
 
         .contact-card {
-            background: rgba(30, 30, 50, 0.3);
+            background: rgba(30, 30, 50, 0.3); /* More transparent */
             padding: 1.5rem;
             border-radius: 10px;
             text-align: center;
@@ -529,7 +949,14 @@
             font-family: 'Share Tech Mono', monospace;
             font-size: 0.9rem;
         }
+        
+        .contact-card p {
+            color: var(--text-secondary);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.9rem;
+        }
 
+        /* Footer */
         footer {
             text-align: center;
             padding: 2rem 5%;
@@ -539,7 +966,60 @@
             font-size: 0.9rem;
         }
 
+        /* Mobile Menu - More transparent */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            height: 100vh;
+            background: rgba(26, 26, 46, 0.95); /* More transparent */
+            backdrop-filter: blur(15px);
+            z-index: 1001;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            padding: 5rem 2rem 2rem;
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .mobile-menu a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--accent);
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--accent);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
         @media (min-width: 768px) {
+            /* Tablet styles */
             .cyber-name {
                 font-size: 3.5rem;
             }
@@ -548,12 +1028,37 @@
                 font-size: 1.5rem;
             }
             
+            .hero .description {
+                font-size: 1.1rem;
+            }
+            
             .cta-buttons {
                 flex-direction: row;
             }
             
             .btn {
                 width: auto;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr 1fr;
+                display: grid;
+            }
+            
+            .about-text {
+                text-align: left;
+            }
+            
+            .about-text h3 {
+                text-align: left;
+            }
+            
+            .about-text p {
+                text-align: left;
+            }
+            
+            .about-highlights {
+                grid-template-columns: 1fr 1fr;
             }
             
             .cert-grid {
@@ -574,12 +1079,21 @@
         }
 
         @media (min-width: 1024px) {
+            /* Desktop styles */
             .cyber-name {
                 font-size: 4.5rem;
             }
             
+            .hero .subtitle {
+                font-size: 1.8rem;
+            }
+            
+            .hero .description {
+                font-size: 1.1rem;
+            }
+            
             .cert-grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(4, 1fr);
             }
             
             .projects-grid {
@@ -587,16 +1101,40 @@
             }
             
             .blog-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(3, 1fr);
             }
             
             .contact-grid {
                 grid-template-columns: repeat(4, 1fr);
             }
+            
+            .menu-toggle {
+                display: none;
+            }
+            
+            nav ul {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 767px) {
+            /* Mobile-specific styles */
+            .menu-toggle {
+                display: flex;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Rest of your HTML remains exactly the same -->
     <div class="bg-animation">
         <canvas id="bgCanvas"></canvas>
     </div>
@@ -611,22 +1149,39 @@
                 <li><a href="#blog">Blog</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-nav">
+        <button class="close-menu" id="close-menu">×</button>
+        <ul>
+            <li><a href="#about" class="mobile-nav-link">About</a></li>
+            <li><a href="#certifications" class="mobile-nav-link">Certifications</a></li>
+            <li><a href="#projects" class="mobile-nav-link">Projects</a></li>
+            <li><a href="#blog" class="mobile-nav-link">Blog</a></li>
+            <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+        </ul>
+    </div>
 
     <section class="hero">
         <div class="hero-content">
             <div class="cyber-name">VANCE FROMMER</div>
-            <div class="subtitle">AI Developer</div>
+            <div class="subtitle">Automation & AI Developer</div>
             <p class="description">
-                Passionate developer specializing in building production-ready AI systems and intelligent applications. Marine with a mission to master AI development from prototyping to production through hands-on projects.
+                Passionate developer specializing in building intelligent automation systems and AI tools. Marine with a mission to master full-stack automation engineering and AI integration through hands-on projects.
             </p>
             <div class="tech-logos">
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="tech-logo" alt="Python">
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="tech-logo" alt="JavaScript">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" class="tech-logo" alt="FastAPI">
+                <img src="https://img.icons8.com/?size=100&id=AqYCfGyGXlO7&format=png&color=FFFFFF" class="tech-logo" alt="Flask">
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" class="tech-logo" alt="Docker">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/v2.17.0/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" class="tech-logo" alt="AWS">
+                <img src="https://img.icons8.com/?size=100&id=al1VlNCK9eK5&format=png&color=FFFFFF" class="tech-logo" alt="AWS">
                 <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/github-white-icon.png" class="tech-logo" alt="Git">
             </div>
             <div class="cta-buttons">
@@ -635,7 +1190,7 @@
             </div>
         </div>
     </section>
-    
+
     <section id="about" class="about">
         <h2>About Me</h2>
         <div class="about-content">
@@ -771,6 +1326,36 @@
     </section>
 
     <section id="certifications" class="certifications">
+        <h2>Certifications & Progress</h2>
+        <div class="cert-grid">
+            <div class="cert-card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="cert-logo" alt="Python">
+                <h4>Python PCEP/PCAP</h4>
+                <p>Python Institute Certification</p>
+                <span class="status-badge">In Progress</span>
+            </div>
+            <div class="cert-card">
+                <img src="https://img.icons8.com/?size=100&id=al1VlNCK9eK5&format=png&color=FFFFFF" class="cert-logo" alt="AWS">
+                <h4>AWS Developer</h4>
+                <p>AWS Certified Developer</p>
+                <span class="status-badge">Planned</span>
+            </div>
+            <div class="cert-card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" class="cert-logo" alt="Docker">
+                <h4>Docker Associate</h4>
+                <p>Docker Certified Associate</p>
+                <span class="status-badge">Planned</span>
+            </div>
+            <div class="cert-card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" class="cert-logo" alt="AI">
+                <h4>AI Developer</h4>
+                <p>AI Developer Certificate</p>
+                <span class="status-badge">Planned</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications" class="certifications">
         <h2>AI Certifications & Progress</h2>
         <div class="cert-grid">
             <div class="cert-card">
@@ -815,7 +1400,7 @@
     </section>
 
     <section id="projects">
-        <h2>AI Developer Roadmap Projects</h2>
+        <h2>AI Developer Projects</h2>
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-icon">🤖</div>
