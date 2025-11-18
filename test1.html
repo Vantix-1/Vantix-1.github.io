@@ -131,6 +131,21 @@
                 0 0 40px var(--cyber-blue);
         }
 
+        .cyber-name::before {
+            content: 'VANCE FROMMER';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--cyber-blue), transparent);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: matrixScan 3s linear infinite;
+            opacity: 0.7;
+        }
+        
         .hero .subtitle {
             font-size: 1.3rem;
             font-weight: 600;
