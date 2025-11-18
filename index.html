@@ -1298,7 +1298,7 @@
                         <div class="marine-flag"></div>
                     </div>
                     <h3>Vance Frommer</h3>
-                    <div class="profile-title">Automation & AI Developer</div>
+                    <div class="profile-title">AI Developer</div>
                     
                     <div class="profile-stats">
                         <div class="profile-stat">
@@ -1477,42 +1477,7 @@
     <section id="blog">
         <h2>Latest in AI</h2>
         <div id="blogContainer" class="blog-grid">
-            <div class="blog-card">
-                <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&q=80')"></div>
-                <div class="blog-content">
-                    <div class="blog-date">March 15, 2025</div>
-                    <h3>AI Breakthrough in Medical Diagnosis</h3>
-                    <p>Researchers develop new AI system that can detect diseases with 95% accuracy from medical images, revolutionizing healthcare diagnostics.</p>
-                    <span class="blog-source">AI Research Journal</span>
-                </div>
-            </div>
-            <div class="blog-card">
-                <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1569163139394-de44cb54d5e8?w=400&q=80')"></div>
-                <div class="blog-content">
-                    <div class="blog-date">March 12, 2025</div>
-                    <h3>Machine Learning Revolutionizes Climate Modeling</h3>
-                    <p>Advanced neural networks are helping scientists predict climate patterns with unprecedented accuracy, enabling better environmental planning.</p>
-                    <span class="blog-source">Tech Innovation Daily</span>
-                </div>
-            </div>
-            <div class="blog-card">
-                <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&q=80')"></div>
-                <div class="blog-content">
-                    <div class="blog-date">March 10, 2025</div>
-                    <h3>The Future of AI in Automation</h3>
-                    <p>How artificial intelligence is transforming industrial automation and creating new opportunities for efficiency and innovation across sectors.</p>
-                    <span class="blog-source">Automation Weekly</span>
-                </div>
-            </div>
-            <div class="blog-card">
-                <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=400&q=80')"></div>
-                <div class="blog-content">
-                    <div class="blog-date">March 8, 2025</div>
-                    <h3>Ethical AI: Challenges and Solutions</h3>
-                    <p>Exploring the ethical considerations in AI development and deployment across industries, with focus on bias mitigation and transparency.</p>
-                    <span class="blog-source">AI Ethics Review</span>
-                </div>
-            </div>
+            <div class="loading">Loading latest AI news...</div>
         </div>
     </section>
 
@@ -1547,6 +1512,52 @@
     </footer>
 
     <script>
+    // NEWS API INTEGRATION - ADD THIS FIRST
+    async function fetchNews() {
+        const blogContainer = document.getElementById('blogContainer');
+        
+        try {
+            const API_KEY = '1c2c0dd599bc4c1aaab4dbb008b27005'; // Get free key at newsapi.org
+            const response = await fetch(`https://newsapi.org/v2/everything?q=artificial+intelligence&sortBy=publishedAt&pageSize=6&apiKey=${API_KEY}`);
+            
+            if (!response.ok) throw new Error('Failed to fetch news');
+            
+            const data = await response.json();
+            blogContainer.innerHTML = '';
+            
+            data.articles.forEach(article => {
+                const blogCard = document.createElement('a');
+                blogCard.href = article.url;
+                blogCard.target = '_blank';
+                blogCard.className = 'blog-card';
+                
+                const imageUrl = article.urlToImage || 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&q=80';
+                const date = new Date(article.publishedAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+                
+                blogCard.innerHTML = `
+                    <div class="blog-image" style="background-image: url('${imageUrl}')"></div>
+                    <div class="blog-content">
+                        <div class="blog-date">${date}</div>
+                        <h3>${article.title}</h3>
+                        <p>${article.description || 'Click to read more...'}</p>
+                        <span class="blog-source">${article.source.name}</span>
+                    </div>
+                `;
+                
+                blogContainer.appendChild(blogCard);
+            });
+        } catch (error) {
+            console.error('Error fetching news:', error);
+            blogContainer.innerHTML = '<div class="loading">Unable to load news. Please try again later.</div>';
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', fetchNews);
+
+    // YOUR EXISTING ANIMATION CODE CONTINUES BELOW...
+    const canvas = document.getElementById('bgCanvas');
+    // etc...
+
         // Animated background
         const canvas = document.getElementById('bgCanvas');
         const ctx = canvas.getContext('2d');
