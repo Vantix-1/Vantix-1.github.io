@@ -1615,66 +1615,6 @@ async function loadNewsAPI() {
     console.log('✅ News API loaded successfully');
 }
 
-// RSS Feed Reader
-async function loadRSSNews() {
-    const blogContainer = document.getElementById('blogContainer');
-    
-    const rssFeeds = [
-        'https://rss.app/feeds/6sN8W9pyPcdXZ3nH.xml',
-        'https://aws.amazon.com/blogs/machine-learning/feed/',
-        'https://huggingface.blog/feed',
-        'https://blog.google/technology/ai/feed/'
-    ];
-
-    blogContainer.innerHTML = '<div class="loading">📡 Loading from RSS feeds...</div>';
-
-    const proxyUrl = 'https://api.allorigins.win/raw?url=';
-    
-    for (let feedUrl of rssFeeds) {
-        try {
-            const response = await fetch(`${proxyUrl}${encodeURIComponent(feedUrl)}`);
-            const text = await response.text();
-            
-            const parser = new DOMParser();
-            const xml = parser.parseFromString(text, 'text/xml');
-            const items = xml.querySelectorAll('item');
-            
-            if (items.length > 0) {
-                blogContainer.innerHTML = '';
-                
-                Array.from(items).slice(0, 6).forEach((item, index) => {
-                    const title = item.querySelector('title')?.textContent || 'AI News';
-                    const description = item.querySelector('description')?.textContent || 'Latest AI developments';
-                    const link = item.querySelector('link')?.textContent || '#';
-                    const pubDate = item.querySelector('pubDate')?.textContent;
-                    const source = item.querySelector('source')?.textContent || 'RSS Feed';
-                    
-                    // Try to extract image from RSS content
-                    const content = item.querySelector('content\\:encoded')?.textContent || item.querySelector('description')?.textContent || '';
-                    const imageUrl = extractImageFromContent(content) || getAIPlaceholderImage(index);
-                    
-                    createNewsCard({
-                        title,
-                        description,
-                        url: link,
-                        date: pubDate,
-                        source: source,
-                        image: imageUrl
-                    }, blogContainer);
-                });
-                
-                console.log('✅ RSS feed loaded successfully');
-                return;
-            }
-        } catch (error) {
-            console.log(`Failed to load ${feedUrl}, trying next...`);
-            continue;
-        }
-    }
-    
-    throw new Error('All RSS feeds failed');
-}
-
 // Fallback static news with images
 function loadFallbackNews() {
     const blogContainer = document.getElementById('blogContainer');
