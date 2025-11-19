@@ -1512,237 +1512,290 @@
     </footer>
 
     <script>
-    // NEWS SECTION - Static AI News Cards
-    function loadStaticNews() {
-        const blogContainer = document.getElementById('blogContainer');
-        
-        // Curated AI news
-        const newsArticles = [
-            {
-                title: "The Rise of AI Agents in 2025",
-                description: "Exploring how autonomous AI agents are transforming industries from healthcare to finance with unprecedented capabilities.",
-                date: "November 15, 2025",
-                url: "https://www.artificialintelligence-news.com/",
-                source: "AI News",
-                image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&q=80"
-            },
-            {
-                title: "LangChain 2.0: Building Production AI Apps",
-                description: "Deep dive into the latest LangChain features for building scalable, production-ready AI applications.",
-                date: "November 12, 2025",
-                url: "https://www.langchain.com/",
-                source: "LangChain Blog",
-                image: "https://images.unsplash.com/photo-1676277791608-ac5ce1e85822?w=400&q=80"
-            },
-            {
-                title: "RAG Systems: Best Practices for 2025",
-                description: "Learn the latest techniques for building Retrieval-Augmented Generation systems with optimal performance.",
-                date: "November 10, 2025",
-                url: "https://huggingface.co/blog",
-                source: "Hugging Face",
-                image: "https://images.unsplash.com/photo-1655720828018-edd2daec9349?w=400&q=80"
-            },
-            {
-                title: "AWS AI Services: What's New",
-                description: "Amazon Web Services announces major updates to their AI and machine learning service offerings.",
-                date: "November 8, 2025",
-                url: "https://aws.amazon.com/blogs/machine-learning/",
-                source: "AWS Blog",
-                image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&q=80"
-            },
-            {
-                title: "Vector Databases for AI Applications",
-                description: "Comparing the top vector database solutions for building intelligent search and recommendation systems.",
-                date: "November 5, 2025",
-                url: "https://www.pinecone.io/blog/",
-                source: "AI Database News",
-                image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=400&q=80"
-            },
-            {
-                title: "Python for AI: Essential Libraries 2025",
-                description: "A comprehensive guide to the must-know Python libraries for AI development in 2025.",
-                date: "November 1, 2025",
-                url: "https://realpython.com/",
-                source: "Real Python",
-                image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400&q=80"
+// Main news loader with multiple fallbacks
+async function loadNews() {
+    console.log('Loading AI news...');
+    
+    // Try RSS first, then fallbacks
+    try {
+        await loadRSSNews();
+    } catch (error) {
+        console.log('RSS failed, trying fallback...');
+        loadFallbackNews();
+    }
+}
+
+// RSS Feed Reader
+async function loadRSSNews() {
+    const blogContainer = document.getElementById('blogContainer');
+    
+    const rssFeeds = [
+        'https://rss.app/feeds/6sN8W9pyPcdXZ3nH.xml', // AI News
+        'https://aws.amazon.com/blogs/machine-learning/feed/',
+    ];
+
+    blogContainer.innerHTML = '<div class="loading">🔄 Loading latest AI news...</div>';
+
+    const proxyUrl = 'https://api.allorigins.win/raw?url=';
+    
+    for (let feedUrl of rssFeeds) {
+        try {
+            const response = await fetch(`${proxyUrl}${encodeURIComponent(feedUrl)}`);
+            const text = await response.text();
+            
+            const parser = new DOMParser();
+            const xml = parser.parseFromString(text, 'text/xml');
+            const items = xml.querySelectorAll('item');
+            
+            if (items.length > 0) {
+                blogContainer.innerHTML = '';
+                
+                Array.from(items).slice(0, 6).forEach(item => {
+                    const title = item.querySelector('title')?.textContent || 'AI News';
+                    const description = item.querySelector('description')?.textContent || 'Latest AI developments';
+                    const link = item.querySelector('link')?.textContent || '#';
+                    const pubDate = item.querySelector('pubDate')?.textContent;
+                    
+                    createNewsCard({
+                        title,
+                        description,
+                        url: link,
+                        date: pubDate,
+                        source: 'AI Feed'
+                    }, blogContainer);
+                });
+                
+                return; // Success - exit function
             }
-        ];
-        
-        blogContainer.innerHTML = '';
-        
-        newsArticles.forEach(article => {
-            const blogCard = document.createElement('a');
-            blogCard.href = article.url;
-            blogCard.target = '_blank';
-            blogCard.className = 'blog-card';
-            
-            blogCard.innerHTML = `
-                <div class="blog-image" style="background-image: url('${article.image}')"></div>
-                <div class="blog-content">
-                    <div class="blog-date">${article.date}</div>
-                    <h3>${article.title}</h3>
-                    <p>${article.description}</p>
-                    <span class="blog-source">${article.source}</span>
-                </div>
-            `;
-            
-            blogContainer.appendChild(blogCard);
+        } catch (error) {
+            console.log(`Failed to load ${feedUrl}, trying next...`);
+            continue;
+        }
+    }
+    
+    throw new Error('All RSS feeds failed');
+}
+
+// Fallback static news
+function loadFallbackNews() {
+    const blogContainer = document.getElementById('blogContainer');
+    
+    const fallbackArticles = [
+        {
+            title: "AI Development Trends 2024",
+            description: "Exploring the latest trends in artificial intelligence and machine learning development.",
+            date: new Date().toLocaleDateString(),
+            url: "https://github.com/Vantix-1/automation-ai-developer",
+            source: "AI Developer Blog"
+        },
+        {
+            title: "Building Production AI Systems",
+            description: "Best practices for deploying AI models in production environments.",
+            date: new Date().toLocaleDateString(),
+            url: "https://github.com/Vantix-1/automation-ai-developer",
+            source: "Tech Insights"
+        },
+        {
+            title: "Open Source AI Tools",
+            description: "Essential open source tools for AI development and deployment.",
+            date: new Date().toLocaleDateString(),
+            url: "https://github.com/Vantix-1/automation-ai-developer",
+            source: "Open Source AI"
+        }
+    ];
+    
+    blogContainer.innerHTML = '';
+    fallbackArticles.forEach(article => createNewsCard(article, blogContainer));
+}
+
+// Helper function to create news cards
+function createNewsCard(article, container) {
+    const blogCard = document.createElement('a');
+    blogCard.href = article.url;
+    blogCard.target = '_blank';
+    blogCard.className = 'blog-card';
+    
+    blogCard.innerHTML = `
+        <div class="blog-image">🤖</div>
+        <div class="blog-content">
+            <div class="blog-date">${formatDate(article.date)}</div>
+            <h3>${article.title.substring(0, 60)}${article.title.length > 60 ? '...' : ''}</h3>
+            <p>${cleanDescription(article.description).substring(0, 120)}...</p>
+            <span class="blog-source">${article.source}</span>
+        </div>
+    `;
+    
+    container.appendChild(blogCard);
+}
+
+function formatDate(dateString) {
+    try {
+        return new Date(dateString).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+        });
+    } catch {
+        return new Date().toLocaleDateString();
+    }
+}
+
+function cleanDescription(description) {
+    return description.replace(/<[^>]*>/g, '').trim();
+}
+
+// Auto-refresh every 4 hours
+function startAutoRefresh() {
+    setInterval(() => {
+        console.log('Auto-refreshing news...');
+        loadNews();
+    }, 4 * 60 * 60 * 1000); // 4 hours
+}
+
+// Mobile menu functionality
+function initMobileMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileNav = document.getElementById('mobile-nav');
+    const closeMenu = document.getElementById('close-menu');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+    if (mobileMenu && mobileNav) {
+        mobileMenu.addEventListener('click', () => {
+            mobileNav.classList.add('active');
+        });
+
+        if (closeMenu) {
+            closeMenu.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+            });
+        }
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+            });
         });
     }
+}
 
-    // Mobile menu functionality
-    function initMobileMenu() {
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileNav = document.getElementById('mobile-nav');
-        const closeMenu = document.getElementById('close-menu');
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+// Animated background
+function initAnimatedBackground() {
+    const canvas = document.getElementById('bgCanvas');
+    if (!canvas) return;
 
-        if (mobileMenu && mobileNav) {
-            mobileMenu.addEventListener('click', () => {
-                mobileNav.classList.add('active');
-            });
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-            if (closeMenu) {
-                closeMenu.addEventListener('click', () => {
-                    mobileNav.classList.remove('active');
-                });
-            }
+    const particles = [];
+    const particleCount = 80;
 
-            mobileNavLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileNav.classList.remove('active');
-                });
-            });
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.vx = (Math.random() - 0.5) * 0.5;
+            this.vy = (Math.random() - 0.5) * 0.5;
+            this.radius = Math.random() * 2;
+        }
+
+        update() {
+            this.x += this.vx;
+            this.y += this.vy;
+
+            if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+            if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+        }
+
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(0, 212, 255, 0.5)';
+            ctx.fill();
         }
     }
 
-    // Animated background - SINGLE VERSION (no duplicates)
-    function initAnimatedBackground() {
-        const canvas = document.getElementById('bgCanvas');
-        if (!canvas) return;
+    for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+    }
 
-        const ctx = canvas.getContext('2d');
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        particles.forEach(particle => {
+            particle.update();
+            particle.draw();
+        });
+
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance < 80) {
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.strokeStyle = `rgba(0, 212, 255, ${1 - distance / 80})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.stroke();
+                }
+            }
+        }
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    window.addEventListener('resize', () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
+    });
+}
 
-        const particles = [];
-        const particleCount = 80;
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.radius = Math.random() * 2;
-            }
-
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-            }
-
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(0, 212, 255, 0.5)';
-                ctx.fill();
-            }
-        }
-
-        // Initialize particles
-        for (let i = 0; i < particleCount; i++) {
-            particles.push(new Particle());
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            particles.forEach(particle => {
-                particle.update();
-                particle.draw();
-            });
-
-            // Draw connections between particles
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < 80) {
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = `rgba(0, 212, 255, ${1 - distance / 80})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.stroke();
-                    }
-                }
-            }
-
-            requestAnimationFrame(animate);
-        }
-
-        animate();
-
-        // Handle window resize
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-    }
-
-    // Smooth scrolling for navigation links
-    function initSmoothScrolling() {
-        const navLinks = document.querySelectorAll('nav a, .mobile-nav-link');
-        
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                const href = link.getAttribute('href');
+// Smooth scrolling
+function initSmoothScrolling() {
+    const navLinks = document.querySelectorAll('nav a, .mobile-nav-link');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                const targetId = href.substring(1);
+                const targetElement = document.getElementById(targetId);
                 
-                // Only handle internal links
-                if (href.startsWith('#')) {
-                    e.preventDefault();
-                    const targetId = href.substring(1);
-                    const targetElement = document.getElementById(targetId);
-                    
-                    if (targetElement) {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
-            });
-        });
-    }
-
-    // Initialize everything when DOM is loaded
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('Initializing portfolio...');
-        loadStaticNews();
-        initMobileMenu();
-        initAnimatedBackground();
-        initSmoothScrolling();
-        
-        // Add loading animation to project cards
-        const projectCards = document.querySelectorAll('.project-card');
-        projectCards.forEach((card, index) => {
-            card.style.animationDelay = `${index * 0.1}s`;
+            }
         });
     });
+}
 
-    // Error handling for images
-    window.addEventListener('error', function(e) {
-        if (e.target.tagName === 'IMG') {
-            console.log('Image failed to load:', e.target.src);
-            e.target.style.display = 'none';
-        }
-    }, true);
+// Initialize everything
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 Initializing Vance Frommer Portfolio...');
+    loadNews();
+    initMobileMenu();
+    initAnimatedBackground();
+    initSmoothScrolling();
+    startAutoRefresh();
+});
+
+// Error handling
+window.addEventListener('error', function(e) {
+    if (e.target.tagName === 'IMG') {
+        console.log('Image failed to load:', e.target.src);
+        e.target.style.display = 'none';
+    }
+}, true);
 </script>
 </body>
 </html>
