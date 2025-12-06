@@ -161,16 +161,24 @@
             margin-bottom: 1rem;
             color: var(--cyber-green);
             animation: fadeInUp 1s ease-out 0.2s both, matrixFlicker 3s infinite;
-            letter-spacing: 2px;
+            letter-spacing: 3px; /* Increased letter spacing */
             text-transform: uppercase;
             position: relative;
             font-family: 'Orbitron', sans-serif;
             text-shadow: 
-                0 0 10px var(--cyber-green),
-                0 0 20px var(--cyber-green),
+                0 0 15px var(--cyber-green),
                 0 0 30px var(--cyber-green),
-                0 0 40px var(--cyber-green);
+                0 0 45px var(--cyber-green),
+                0 0 60px var(--cyber-green); /* Even more glow */
             word-wrap: break-word;
+            padding: 1rem 2rem; /* Add padding */
+            background: rgba(0, 0, 0, 0.6); /* Dark background behind text */
+            border: 2px solid var(--cyber-green); /* Thicker border */
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 
+                0 0 30px var(--accent-glow),
+                inset 0 0 20px rgba(0, 255, 157, 0.2); /* Inner and outer glow */
         }
 
         .cyber-name::before {
@@ -185,7 +193,51 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: matrixScan 3s linear infinite;
-            opacity: 0.7;
+            opacity: 0.8;
+            z-index: -1;
+        }
+
+        /* Add a decorative corner effect */
+        .cyber-name::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, 
+                transparent 0%, 
+                var(--cyber-green) 25%, 
+                transparent 50%, 
+                var(--cyber-blue) 75%, 
+                transparent 100%);
+            z-index: -2;
+            border-radius: 12px;
+            opacity: 0.3;
+            animation: cornerGlow 4s linear infinite;
+        }
+
+        @keyframes cornerGlow {
+            0%, 100% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 0.6;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .cyber-name { 
+                font-size: 3.5rem; 
+                padding: 1.5rem 3rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .cyber-name { 
+                font-size: 4.5rem; 
+                padding: 2rem 4rem;
+            }
         }
 
         .hero .subtitle {
