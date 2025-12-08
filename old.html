@@ -41,11 +41,33 @@
 
         body {
             font-family: 'Space Grotesk', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e8f0fe 100%);
+            background: #1a1a1a;
             color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
             min-height: 100vh;
+            position: relative;
+        }
+
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        #canvas-container canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        nav, section, footer {
+            position: relative;
+            z-index: 1;
         }
 
         /* Navigation */
@@ -947,6 +969,8 @@
     </style>
 </head>
 <body>
+    <div id="canvas-container"></div>
+
     <nav>
         <div class="container">
             <div class="logo">VANCE FROMMER</div>
@@ -1545,7 +1569,166 @@
             initSmoothScrolling();
             initActiveNav();
             loadNews();
+            init3DBackground();
         });
+
+        // 3D Animated Background with Three.js
+        function init3DBackground() {
+            const container = document.getElementById('canvas-container');
+            
+            // Scene setup
+            const scene = new THREE.Scene();
+            scene.fog = new THREE.Fog(0x1a1a1a, 1, 1000);
+            
+            // Camera setup
+            const camera = new THREE.PerspectiveCamera(
+                75,
+                window.innerWidth / window.innerHeight,
+                0.1,
+                1000
+            );
+            camera.position.z = 30;
+            
+            // Renderer setup
+            const renderer = new THREE.WebGLRenderer({ 
+                antialias: true,
+                alpha: true 
+            });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            container.appendChild(renderer.domElement);
+            
+            // Create geometric objects with different colors
+            const geometries = [
+                new THREE.BoxGeometry(2, 2, 2),
+                new THREE.TetrahedronGeometry(1.5),
+                new THREE.OctahedronGeometry(1.5),
+                new THREE.IcosahedronGeometry(1.5),
+                new THREE.TorusGeometry(1, 0.4, 16, 100),
+                new THREE.ConeGeometry(1, 2, 8)
+            ];
+            
+            // Color palette: blue, green, black, red
+            const colors = [
+                0x0066ff, // Blue
+                0x00c853, // Green
+                0xff0000, // Red
+                0x00d4ff, // Cyan blue
+                0x00ff88, // Light green
+                0xff1744  // Bright red
+            ];
+            
+            const objects = [];
+            const objectCount = 15;
+            
+            for (let i = 0; i < objectCount; i++) {
+                const geometry = geometries[Math.floor(Math.random() * geometries.length)];
+                const material = new THREE.MeshPhongMaterial({
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    shininess: 100,
+                    transparent: true,
+                    opacity: 0.7,
+                    wireframe: Math.random() > 0.5
+                });
+                
+                const mesh = new THREE.Mesh(geometry, material);
+                
+                // Random position
+                mesh.position.x = (Math.random() - 0.5) * 80;
+                mesh.position.y = (Math.random() - 0.5) * 80;
+                mesh.position.z = (Math.random() - 0.5) * 80;
+                
+                // Random rotation
+                mesh.rotation.x = Math.random() * Math.PI;
+                mesh.rotation.y = Math.random() * Math.PI;
+                
+                // Random rotation speed
+                mesh.userData.rotationSpeed = {
+                    x: (Math.random() - 0.5) * 0.02,
+                    y: (Math.random() - 0.5) * 0.02,
+                    z: (Math.random() - 0.5) * 0.02
+                };
+                
+                // Random float speed
+                mesh.userData.floatSpeed = (Math.random() - 0.5) * 0.02;
+                mesh.userData.floatOffset = Math.random() * Math.PI * 2;
+                
+                scene.add(mesh);
+                objects.push(mesh);
+            }
+            
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
+            scene.add(ambientLight);
+            
+            const directionalLight1 = new THREE.DirectionalLight(0x0066ff, 0.8);
+            directionalLight1.position.set(5, 5, 5);
+            scene.add(directionalLight1);
+            
+            const directionalLight2 = new THREE.DirectionalLight(0x00c853, 0.6);
+            directionalLight2.position.set(-5, -5, -5);
+            scene.add(directionalLight2);
+            
+            const pointLight = new THREE.PointLight(0xff0000, 1, 100);
+            pointLight.position.set(0, 0, 20);
+            scene.add(pointLight);
+            
+            // Mouse interaction
+            let mouseX = 0;
+            let mouseY = 0;
+            let targetX = 0;
+            let targetY = 0;
+            
+            document.addEventListener('mousemove', (event) => {
+                mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+                mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+            });
+            
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+                
+                // Smooth camera movement based on mouse
+                targetX = mouseX * 5;
+                targetY = mouseY * 5;
+                camera.position.x += (targetX - camera.position.x) * 0.05;
+                camera.position.y += (targetY - camera.position.y) * 0.05;
+                camera.lookAt(scene.position);
+                
+                // Animate objects
+                objects.forEach((obj, index) => {
+                    // Rotation
+                    obj.rotation.x += obj.userData.rotationSpeed.x;
+                    obj.rotation.y += obj.userData.rotationSpeed.y;
+                    obj.rotation.z += obj.userData.rotationSpeed.z;
+                    
+                    // Floating motion
+                    obj.position.y += Math.sin(Date.now() * 0.001 + obj.userData.floatOffset) * obj.userData.floatSpeed;
+                    
+                    // Wrap around screen edges
+                    if (obj.position.x > 50) obj.position.x = -50;
+                    if (obj.position.x < -50) obj.position.x = 50;
+                    if (obj.position.y > 50) obj.position.y = -50;
+                    if (obj.position.y < -50) obj.position.y = 50;
+                });
+                
+                // Animate point light
+                pointLight.position.x = Math.sin(Date.now() * 0.001) * 20;
+                pointLight.position.y = Math.cos(Date.now() * 0.001) * 20;
+                
+                renderer.render(scene, camera);
+            }
+            
+            animate();
+            
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        }
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </body>
 </html>
