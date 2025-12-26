@@ -569,7 +569,7 @@
         .profile-photo {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: contain; /* Changed from 'cover' to 'contain' */
             display: block;
         }
 
@@ -1121,96 +1121,86 @@
         <h2>Projects</h2>
         <div class="projects-grid">
             <div class="project-card">
-                <div class="project-icon">💬</div>
-                <h3>Production Chat API</h3>
-                <p>A production-ready chat API built with FastAPI, featuring conversation management, rate limiting, monitoring, and integration with OpenAI's GPT models for intelligent chat interactions.</p>
+                <div class="project-icon">🤖</div>
+                <h3>AI Chat Bot</h3>
+                <p>Interactive chatbot built using OpenAI's API with conversation memory and context management. Features include message history, context preservation, and natural language understanding.</p>
                 <div class="tech-stack">
                     <span class="tech-tag">Python</span>
-                    <span class="tech-tag">FastAPI</span>
-                    <span class="tech-tag">OpenAI</span>
-                    <span class="tech-tag">Docker</span>
-                    <span class="tech-tag">PostgreSQL</span>
+                    <span class="tech-tag">OpenAI API</span>
+                    <span class="tech-tag">Conversation AI</span>
                 </div>
                 <div class="project-links">
-                    <a href="https://github.com/Vantix-1/automation-ai-developer/tree/main/phase_2_active/production_apis/chatapi" target="_blank" class="project-link">View Readme</a>
+                    <a href="https://github.com/Vantix-1/automation-ai-developer/tree/main/phase_2_active/openai_api/week1_day1-2" target="_blank" class="project-link">View on GitHub</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-icon">⛓️</div>
+                <h3>LangChain Fundamentals</h3>
+                <p>Foundational LangChain implementations covering chains, prompts, and memory systems. Building blocks for creating sophisticated AI applications with structured workflows.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">LangChain</span>
+                    <span class="tech-tag">LLMs</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/Vantix-1/automation-ai-developer/tree/main/phase_2_active/langchain_fundamentals/week2_day11-13" target="_blank" class="project-link">View on GitHub</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-icon">🔄</div>
+                <h3>Multistep Assistant</h3>
+                <p>Advanced LangChain assistant capable of handling multi-step reasoning and complex workflows. Implements sequential processing and conditional logic for sophisticated AI interactions.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">LangChain</span>
+                    <span class="tech-tag">Multi-step Reasoning</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/Vantix-1/automation-ai-developer/tree/main/phase_2_active/langchain_fundamentals/week2_day14-16" target="_blank" class="project-link">View on GitHub</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-icon">🛠️</div>
+                <h3>Agents and Tools</h3>
+                <p>AI agents with external tool integration for real-world task execution. Features custom tools, agent orchestration, and dynamic tool selection based on context.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">LangChain</span>
+                    <span class="tech-tag">Agent Systems</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/Vantix-1/automation-ai-developer/tree/main/phase_2_active/langchain_fundamentals/week2_day17-19" target="_blank" class="project-link">View on GitHub</a>
                 </div>
             </div>
 
             <div class="project-card">
                 <div class="project-icon">🚀</div>
-                <h3>FastAPI Production Service</h3>
-                <p>A robust FastAPI service template with authentication, database integration, deployment configurations, and comprehensive error handling for scalable production applications.</p>
+                <h3>Advanced Features & Integrations</h3>
+                <p>Sophisticated LangChain implementations with external API integrations, custom callbacks, and production-ready features for scalable AI applications.</p>
                 <div class="tech-stack">
                     <span class="tech-tag">Python</span>
-                    <span class="tech-tag">FastAPI</span>
-                    <span class="tech-tag">JWT Auth</span>
-                    <span class="tech-tag">SQLAlchemy</span>
-                    <span class="tech-tag">Docker</span>
+                    <span class="tech-tag">LangChain</span>
+                    <span class="tech-tag">API Integration</span>
                 </div>
                 <div class="project-links">
-                    <a href="https://github.com/Vantix-1/automation-ai-developer/tree/main/phase_2_active/production_apis/fastapi" target="_blank" class="project-link">View Readme</a>
+                    <a href="https://github.com/Vantix-1/automation-ai-developer/tree/main/phase_2_active/langchain_fundamentals/week2_day20-21" target="_blank" class="project-link">View on GitHub</a>
                 </div>
             </div>
 
             <div class="project-card">
                 <div class="project-icon">📊</div>
-                <h3>API Monitoring System</h3>
-                <p>Comprehensive monitoring solution for production APIs with real-time metrics, health checks, alerting, and performance tracking to ensure system reliability and uptime.</p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Prometheus</span>
-                    <span class="tech-tag">Grafana</span>
-                    <span class="tech-tag">FastAPI</span>
-                    <span class="tech-tag">Docker</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/Vantix-1/automation-ai-developer/tree/main/phase_2_active/production_apis/monitoring" target="_blank" class="project-link">View Readme</a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-icon">🧠</div>
-                <h3>RAG API System</h3>
-                <p>Retrieval-Augmented Generation API that integrates vector databases with language models for context-aware AI responses, document search, and intelligent information retrieval.</p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">LangChain</span>
-                    <span class="tech-tag">FAISS</span>
-                    <span class="tech-tag">FastAPI</span>
-                    <span class="tech-tag">OpenAI</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/Vantix-1/automation-ai-developer/tree/main/phase_2_active/production_apis/ragapi" target="_blank" class="project-link">View Readme</a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-icon">🤖</div>
-                <h3>AI Chat Assistant</h3>
-                <p>Interactive chatbot using OpenAI's API with advanced conversation memory, context management, and natural language understanding for intelligent dialogue systems.</p>
+                <h3>OpenAI Function Calling & Structured Outputs</h3>
+                <p>Implementation of OpenAI's function calling capabilities for structured data extraction and API-like interactions with LLMs. Enforces output schemas and data validation.</p>
                 <div class="tech-stack">
                     <span class="tech-tag">Python</span>
                     <span class="tech-tag">OpenAI API</span>
-                    <span class="tech-tag">Conversation AI</span>
-                    <span class="tech-tag">Memory Systems</span>
+                    <span class="tech-tag">Structured Data</span>
                 </div>
                 <div class="project-links">
-                    <a href="https://github.com/Vantix-1/automation-ai-developer/tree/main/phase_2_active/openai_api/Advanced_Content_tools_%26_Streaming" target="_blank" class="project-link">View Readme</a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-icon">⚡</div>
-                <h3>LangChain Multi-Agent System</h3>
-                <p>Advanced multi-agent system using LangChain with specialized agents, tool integration, and coordinated workflows for complex AI task execution and automation.</p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">LangChain</span>
-                    <span class="tech-tag">Multi-Agent</span>
-                    <span class="tech-tag">Tool Integration</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/Vantix-1/automation-ai-developer/tree/main/phase_2_active/langchain_fundamentals/chains_%26_multistep" target="_blank" class="project-link">View Readme</a>
+                    <a href="https://github.com/Vantix-1/automation-ai-developer/tree/main/phase_2_active/openai_api/week1_day9-10" target="_blank" class="project-link">View on GitHub</a>
                 </div>
             </div>
         </div>
